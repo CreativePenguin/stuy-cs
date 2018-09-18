@@ -1,0 +1,38 @@
+==================================================================
+Exercises: Submit your solutions on google classroom.
+==================================================================
+
+1. Evaluate the following:
+    a. 1.0 / 0.0
+//Infinity
+    b. Math.sqrt(-1.0)
+//NaN
+    c. 1.03 - 0.42
+//0.61
+2. Suppose that a and b are boolean values. Show that the expression
+   
+   (! (a && b) && (a || b)) || ((a && b) || !(a || b))
+
+   is equivalent to true.
+
+/*
+boolean a = false;
+boolean b = true;
+*/
+
+3. Read the tutorial concerning  binary float point arithmetic 
+   found here: 
+
+ https://ryanstutorials.net/binary-tutorial/binary-floating-point.php#introduction.
+
+4. Write a program that takes a double value t from either the command line or via a 
+   Scanner object and prints the value sin(2t) + sin(3t).  The Math library contains
+   the sin() method.
+
+   If you are reading arguments from the command line, you will need 
+   to convert a String into a double.  Use Double.parseDouble(String).
+
+   Example,   Double.parseDouble("2.5") returns 2.5.
+
+   Otherwise if you're using a Scanner object use the method nextDouble() to retrieve
+   a double from the terminal.
