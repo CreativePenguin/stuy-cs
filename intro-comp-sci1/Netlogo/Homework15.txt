@@ -1,0 +1,127 @@
+to setup
+  ca
+  crt num-turtles[
+    setxy random-xcor random-ycor
+  ]
+end
+
+;The go command
+to go
+  every 1 / 60 [
+    ask turtles [
+      ifelse ycor > 0
+      [ifelse xcor > 0
+        [quadrant1]
+        [quadrant2]
+      ]
+      [ifelse xcor > 0
+        [quadrant4]
+        [quadrant3]
+      ]
+    ]
+  ]
+end
+
+;quadrant 1 code
+to quadrant1
+  wig
+  set color red
+  quad1Small
+end
+to wig
+  fd turtle-speed
+end
+to quad1Small
+  if size > 1
+  [set size (size - 0.1)]
+end
+;quadrant 2 code
+to quadrant2
+  fastwiggle
+  joinTheLightSide
+  quad2Small
+end
+to fastwiggle
+  fd turtle-speed * 2
+  lt random max-turn-angle * 2
+  rt random max-turn-angle * 2
+end
+;I know you can do this in a much easier fashion using the remainder function
+;(only add 0.1 to color if remainder is smaller than 9)
+to joinTheLightSide
+  if color - new-delete-ones-digit < 9
+  [set color color + 0.1]
+end
+to-report delete-ones-digit
+  report (round (color / 10)) * 10
+end
+to-report new-delete-ones-digit
+  ifelse delete-ones-digit > color
+  [report delete-ones-digit - 10]
+  [report delete-ones-digit]
+end
+to quad2Small
+  if size > 1
+  [set size (size - 0.2)]
+end
+
+;quadrant 3 code
+to quadrant3
+  indecisiveWiggle
+  dietingTurtles
+end
+to indecisiveWiggle
+  fd (1 / 2 * turtle-speed)
+  lt random max-turn-angle * 2
+  rt random max-turn-angle * 2
+end
+to dietingTurtles
+  if size < max-turtle-size
+  [set size (size + 0.1)]
+end
+
+;quadrant 4 code
+to quadrant4
+  wiggle
+  colorChange4
+  quad1Small
+end
+to wiggle
+  wig
+  lt random max-turn-angle
+  rt random max-turn-angle
+end
+to colorChange4
+  set color colorValue
+end
+to-report colorValue
+  report ((random 14) * 10) + 5
+end
+;Q1: You make the program go faster or slower with the every command
+;The every command changes the amount of frames that are run at a time
+;The smaller the every command is, the faster it will run
+
+;Q2: That statements means that the probability that the turtle will go straight is equal to the probability that the turtle will turn left and the probability that the turtle will turn right
+
+;Q3: to get the ones digit, just do what I did in delete-ones-digit, then subtract that value from the original value
+;To find the n digit, you can use the precision function with parameters: number, place
+;Number = the number you want to find the n digit for
+;Place = n.
+;-n to round digits to left of decimal
+;Subtract n*10 if the resulting value is greater than original
+;Subtract resulting value from original
+;Subtract subsequent zeroes
+;How the code should probably look like
+to printNDigit [number n]
+  ifelse round getNDigit number n > getNDigit number n
+  [print (round getNDigit number n) - 1]
+  [print round getNDigit number n]
+end
+to-report getNDigit [number n]
+  report (number - getRoundN number n) / (10 ^ ((n + 1) * -1))
+end
+to-report getRoundN [number n]
+  ifelse precision number n > number
+  [report (precision number n - 100)]
+  [report precision number n]
+end

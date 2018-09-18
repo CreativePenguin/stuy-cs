@@ -1,0 +1,50 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |Classwork (9-26-2017)|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+;Checking to see if a number is positive or negative, or zero
+(define (checkSign x)
+  (if
+   (= x 0)
+   3
+   (if
+    (> x 0)
+    1
+    (if
+     (< x 0)
+     2
+     "Learn to code noob"
+    )
+   )
+  )
+)
+
+;Making our own quotient function
+(define (myQuotient a b)
+  (/
+   (-
+    a
+    (remainder a b)
+   )
+   b
+  )
+)
+
+;Practice with cond statement rewriting checkSign function
+(define (checkSign2 x)
+  (cond
+    ( (= x 0) 3)
+    ( (> x 0) 1)
+    ( (< x 0) 2)
+    ( #true   "learn to code noob")
+   )
+)
+
+;Practice with cond statement rewriting gradeFix
+(define (gradeFix n)
+  (cond
+    ( (>= n 90) n)
+    ( (> n 86) 88)
+    ( (> n 82) 85)
+    (  #t      50)
+   )
+)

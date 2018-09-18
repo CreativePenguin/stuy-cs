@@ -1,0 +1,3 @@
+public class AddThreeReals {
+    package fall.lesson04;
+    import java.util.Scanner;
