@@ -1,0 +1,4 @@
+﻿;Creating a fahrenheit to celsius converter
+(define (ctof f) (/(* 5 (- f 32)) 9))
+(ctof 32)
+(ctof 212)

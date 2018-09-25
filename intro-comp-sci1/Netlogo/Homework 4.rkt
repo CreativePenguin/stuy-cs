@@ -1,0 +1,69 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |Homework 4|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;Useful Functions
+(define (sq x) (* x x))
+
+;Calculating the Area of a Circle
+(define (circle-area x) (* 3.14159(sq x)))
+
+;Calculating the distance between two coordinates
+(define (distance x1 y1 x2 y2)
+  (sqrt 
+   (+ 
+    (sq (- x2 x1))
+    (sq (- y2 y1))
+   )
+  )
+)
+
+;Getting the ones digit of a number
+(define (getOnesDigit x) (remainder x 10))
+
+;Getting the tens digit of a number
+(define (getTensDigit x) (/(-(remainder x 100)(remainder x 10) )10))
+(getTensDigit 124)
+
+;Getting the nth digit of a number
+(define (getNthDigit x y)
+  (/
+   (-
+    (remainder x (expt 10 y))
+    (remainder x (expt 10 (- y 1)))
+   )
+   (expt 10 (- y 1))
+  )
+)
+
+;Newton's Gravity
+(define (gravity m1 m2 r)
+  (/
+   (*
+    6.674e-11 m1 m2
+   )
+   (sq r)
+  )
+)
+
+;discriminant of a quadratic
+(define (discriminant a b c)
+  (+
+   (* a (sq x))
+   (* b x)
+   c
+  )
+)
+;quadSolvePlus
+(define (quadSolvePlus a b c)
+  (/
+   (-
+    (sqrt
+     (-
+      (sq b)
+      (* 4 a c)
+     )
+    ) 
+    b)
+  (* 2 a)
+  )
+)

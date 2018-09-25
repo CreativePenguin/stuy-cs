@@ -1,0 +1,88 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |Classwork (9-26-2017)|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+;return true if multiple is of 3 or 5
+(define (or35 n)
+  (cond
+    (         (< n 0)       "What! Me no understand why there is straight line in front of number! Please try again with no small line")
+    ( (= 0 (remainder n 3)) "#true")
+    ( (= 0 (remainder n 5)) "#true")
+    (          #true        "#false")
+   )
+)
+;same statement without if and cond
+(define (2or35 n)
+  (and
+   (> n 0)
+   (or
+    (= 0(remainder n 3))
+    (= 0(remainder n 5))
+   )
+  )
+)
+;return true if multiple of 3 or 5, return false if multiple of 3 and 5 
+(define (old35 n)
+ (if
+  (< n 0)
+  "Negative number found, initiating self-destruct sequence"
+  (and
+   (not
+    (and
+     (= 0 (remainder n 3))
+     (= 0 (remainder n 5))
+    )
+   )
+   (or
+    (= 0 (remainder n 3))
+    (= 0 (remainder n 5))
+   )
+  )
+ )
+)
+
+;return true if answer is 1-2 more than a multiple of20
+(define (more20 n)
+  (if
+   (< n 0)
+   "Kill all the negative numbers, we must be purified from their evil"
+   (or
+    (= 1 (remainder n 20))
+    (= 2 (remainder n 20))
+   )
+  )
+)
+
+;return true if answer is 1-2 less than a multiple of 20
+(define (less20 n)
+  (if
+   (< n 0)
+   "All of the negative numbers have been banned from entering the country"
+   (or
+    (= 18 (remainder n 20))
+    (= 19 (remainder n 20))
+   )
+  )
+)
+
+;return true if answer is within 2 of a multiple of 10
+(define (nearTen n)
+  (if
+   (< n 0)
+   "We have built a wall between us and the negative numbers to stop the drug cartels and illegal aliens"
+   (or
+    (or
+     (= 8 (remainder n 10))
+     (= 9 (remainder n 10))
+    )
+    (or
+     (= 1 (remainder n 10))
+     (= 2 (remainder n 10))
+    )
+   )
+  )
+)
+
+;categorizing numbers
+(define (categorize n)
+  (cond
+    ( (nearTen n) "down")
