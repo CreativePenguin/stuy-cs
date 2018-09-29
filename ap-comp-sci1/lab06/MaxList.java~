@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class MaxList {
+
+    private static int SENTINEL = 0;
+    
+    public static void main(String[] args) {
+	Scanner sys = new Scanner(System.in);
+	int max = 0;
+	
+	while (int a != SENTINEL) {
+	    System.out.print("Enter Int: ");
+	    a = sys.nextInt();
+	    max = (a > max) ? a : max;
+	}
+	System.out.println(max);
+    }
+}

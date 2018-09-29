@@ -1,0 +1,33 @@
+public class ReverseDigits {
+
+    private static int calcLength(int a) {
+	int counter = 1;
+	int divisor = 10;
+	while(divisor < a) {
+	    divisor *= 10;
+	    counter++;
+
+	}
+	return counter;
+    }
+
+    private static int reverseDigits(int a) {
+	double divisor = Math.pow(10,calcLength(10) - 1);
+	System.out.println(divisor);
+	int val = 0;
+	while(divisor > 0) {
+	    val *= 10;
+	    val += (a % divisor);// / (divisor / 10);
+	    System.out.println((a % divisor));
+	    divisor /= 10;
+	}
+	return val;
+    }
+    
+    public static void main(String[] args) {
+	int a = Integer.parseInt(args[0]);
+
+	System.out.println(reverseDigits(a));
+    }
+
+}
