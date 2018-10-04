@@ -1,0 +1,8 @@
+public class Factors {
+    public static void main(String[] args) {
+	long input = Long.parseLong(args[0]);
+	boolean isPrime = true;
+
+	for(int i = 2; i < input; i++) {
+	    if(input % i == 0) input /= i;
+	    
