@@ -1,0 +1,21 @@
+ n	power
+---	----
+19	1
+19	2
+19	4
+19	8
+19	16
+
+B) The first loop is computing how much it should double the value power by, depending on the user input. It will then proceed to double the value until after it goes over input / 2.
+
+ n     power 	  weight       output so far
+---    -----	  -------      -------------
+19      16	    1	        1
+3	8	    0		10     
+3	4	    0		100
+3	2	    1		1001
+1	1	    1		10011
+
+D) The second loop is determining whether n is still larger than power. If it is, then it is setting weight to one. If not, then weight will remain with a value of 0
+
+9) s = Integer.toString(s);

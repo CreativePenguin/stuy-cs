@@ -1,0 +1,9 @@
+ n	power
+---	----
+19	1
+19	2
+19	4
+19	8
+19	16
+
+2) The first loop is computing how much it should double the value power by, depending on the user input. However, the user input

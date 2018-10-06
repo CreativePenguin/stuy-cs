@@ -1,9 +1,0 @@
-public class DivsorPattern {
-    public static void main(String[] args) {
-	int input = Integer.parseInt(args[0]);
-	for(int i = 0; i <= input; i++) {
-	    System.out.println((input % i == 0) ? "  " : "* ");
-	}
-	System.out.println(input);
-    }
-}
