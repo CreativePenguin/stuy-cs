@@ -1,0 +1,11 @@
+public class Gambler {
+    public static void main(String[] args) {
+	final int stake = Integer.parseInt(args[0]);
+	final int goal = Integer.parseInt(args[1]);
+	final int trials = Integer.parseInt(args[2]);
+	int currentVal = stake;
+
+	for(int i = 0; i <= trials; i++) {
+	    
+	}
+	System.out.println((currentVal >= goal) ? 
