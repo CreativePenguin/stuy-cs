@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#heading {
+				margin: 0px;
+				border: 3px solid white;
+				text-align: center;
+				padding: 3px;
+				background-color: black;
+				color: white;
+				text-transform: uppercase;
+				font-size: 400%;
+				width:100%;
+			}
+			#names {
+				margin:0px;
+				background-color:black;
+				color: white;
+				font-size: 200%;
+				text-align: center;
+				padding: 5px;
+				width:100%;
+			}
+			#link {
+				float: left;
+				padding:5%;
+				border:1px solid white;
+				width:85%;
+				color: white;
+				background-color:red;
+				text-align: center;
+				margin:2px;
+			}
+			#about {
+				margin:0px;
+				float:left;
+				width:45%;
+				background-color:red;
+				color:white;
+				padding:2%;
+			}
+			#howto {
+				margin:0px;
+				float:left;
+				width:45%;
+				padding:2%;
+				background-color:orange;
+				color:blue;
+			}
+		</style>
+		<h2 id = 'heading'> Chicago Crime Stats </h2>
+		<h4 id = 'names'> by Mark De Paula and Winston Peng </h4>
+	</head>
+	<body>
+		<div id = 'about'>
+			<h4>About Our Site</h4>
+			Our website displays crime statistics from the Chicago Police Database mostly from 2015. The data is sorted by ID rather than date, so a few data entries are not part of the 2015 range. Our website displays the data in a table and gives the user a form from which they can pick a specific crime. The python file will then create a new table containing only data which contains that crime, or only crimes of which an arrest was made or was a domestic issue.
+			<br> 
+			<a href="http://homer.stuy.edu/~wpeng00/finalproject/tableopen.py"> <div id = 'link'> Final Project Website: Chicago Crime Stats </div> </a>
+		</div>
+		<div id = 'howto'>
+			<h4>How To Use Site</h4>
+		<p>To use the site, all you need to do is scroll and click the form. To view the full table (it is very long), you must scroll down the page. To change the table you are viewing, you click on the drop-down-table form to select the crime and then the "check data" submit button to change the table.</p>
+		<ul>
+		<li> all crime table </li>
+		<li> tables for specific common crimes </li>
+		<li> tables for crimes which the ARREST and DOMMESTIC coloumns are TRUE </li>
+		<li> form to select these tables </li>
+		</ul>
+		</div>
+	</body>
+</html>

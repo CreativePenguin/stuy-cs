@@ -1,0 +1,11 @@
+public class Even {
+
+    private boolean isEven(int x) {
+	return x % 2 == 0;
+    }
+
+    private double calcHypotenuse(double a, double b) {
+	return Math.sqrt((a * a) + (b * b));
+    }
+
+}
