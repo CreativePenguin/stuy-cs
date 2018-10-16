@@ -1,7 +1,7 @@
 public class CountDigits {
 
     private static int countDigits(int n) {
-        return (Math.abs(n) > 0) ? countDigits(n /= 10) + 1 : 0;
+        return (Math.abs(n) < 10) ? 1 : countDigits(n / 10) + 1;
     }
 
     public static void main(String[] args) {
