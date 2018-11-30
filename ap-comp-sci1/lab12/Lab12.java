@@ -56,6 +56,15 @@ public class Lab12 {
         return val;
     }
 
+    public String remove(String input, String remove) {
+	int rlen = remove.length();
+	for(int i = 0; i < input.length() - rlen; i++) {
+	    if(!val.contains(remove)) return val;
+	    if(val.substring(i,i + rlen).equals(remove))
+		val = val.substring(0,i) + val.substring(i + rlen);
+	}
+    }
+		
     public static void main(String[] args) {
         Lab12 lab = new Lab12();
         
