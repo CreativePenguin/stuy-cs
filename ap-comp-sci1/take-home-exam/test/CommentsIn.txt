@@ -1,0 +1,17 @@
+//  comment
+a // This is a comment.
+b
+c
+/*  commment
+*   comment
+*/  d
+e
+f // comment /* comment */
+g
+h
+i  /* comment // comment
+comment*/ j
+// comment
+/* comment
+comment
+*/k
