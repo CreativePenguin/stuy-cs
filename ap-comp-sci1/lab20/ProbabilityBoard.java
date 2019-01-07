@@ -1,4 +1,4 @@
-public class Lab20 {
+public class ProbabilityBoard {
 
     private double[] probabilityBoard(int spaces, int trials) {
 	double[] val = new double[trials];
@@ -29,8 +29,4 @@ public class Lab20 {
         }
     }
 
-    public static void main(String[] args) {
-	Lab20 lab = new Lab20();
-        //lab.runProbabilityBoard();
-    }
 }
