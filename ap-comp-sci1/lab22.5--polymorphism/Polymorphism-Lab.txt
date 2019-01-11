@@ -1,0 +1,142 @@
+There are 11 questions in this lab.
+===================================
+ex.     Coin c;
+        if (Math.random() < 0.5) c = new Coin();
+	else c = new BiasedCoin(0.2); 
+	c.flip();
+
+=============================================================================
+ QUESTIONS: 1 - 4 : Given the code from above.
+============================================================================
+1. What is the chance of flipping a H?
+
+A: The chance of flipping an "H" is either 50% or 20% based off of whether the
+   random number in Math.random() is greater than 0.5
+
+2. Will this code compile? Explain.
+
+         Object c = new Coin();
+	 c.flip();
+
+The code will not compile, as flip() is not a method in the object class.
+
+For quesions 3 and 4 consider this code:
+
+         Flippable c = new BiasedCoin(0.2);
+	 c.flip();
+
+3. Will this compile?         
+
+A: This will compile.
+
+4. Will it run?  
+
+A: It will run.
+
+============================================================================
+ QUESTIONS 5 - 10 
+============================================================================
+ // Class A
+ public class A{
+
+      private int x;
+      public A(int x) { this.x = x;}
+      public int f() { return x + 2; }
+      public int g() { return x - 2; }
+}
+
+// Class B
+ public class B extends A{
+
+      private int y;
+      public B(int y) { super(1);  this.y = y;}
+      public int g() { return  3 * y;}
+ }
+
+// Class C
+ public class C extends B{
+
+      private int z;
+      public C(int z) {super(2);  this.z = z;}
+      public int h() { return f() + g() + z; }
+ }
+
+Identify whether each statement will compile and if so,
+determine the result each method call.
+
+5. Given :  A a = new A(10);
+      
+      (a). a.f();    //returns 12
+      (b). a.g();    //returns 8
+
+
+
+6. Given :  A b = new B(10);
+
+      (a). b.f();    //reuturns 3
+      (b). b.g();    //returns 30
+
+7. Given :    C c = new C(10);
+              
+      (a). c.f();    //returns 3
+      (b). c.g();    //returns 6
+      (c). c.h();    //returns 19
+
+8. Given :     A c = new C(10);
+       
+      (a). c.f();    //returns 3
+      (b). c.g();    //returns 6
+      (c). c.h();    //will not compile
+
+
+9. Given :     C d = new C(10);
+
+     (a). ((A)d).f(); //will result in 12
+     (b). ((A)d).g(); //will result in 8
+     (c). ((A)d).h(); //will not compile
+	
+10. Consider:
+
+    interface Interface1 {
+    	      public int f(int x);
+    }
+
+    public class R implements Interface1{
+    	   
+             public int f(int x){
+                return 2 * x;
+   	     }
+	     
+	     public int g(int x){
+	     	 return 10;
+             }
+
+	     @Override 
+	     public String toString(){
+	     	    return "Howdy";
+	     }
+   }
+
+  Given : 
+          Interface1 t1 = new R();
+	  R t2 = (R)t1;
+
+        (a). t1.f(1);       //returns 3
+	(b). t2.f(1);       //returns 3
+	(c). t1.g(1);       //returns error
+	(d). t2.g(1);       //returns 10
+	(e). t1.toString(); //returns hashcode for R class
+	(f). t2.toString(); //returns Howdy
+    
+   
+=============================================================================
+ Clients that use a Coin object.
+=============================================================================
+
+11. Write a program Children.java that answers the following question.
+    A couple beginning a family decides to keep having children until they have
+    at least one of either sex. Estimate the average number of children they 
+    will have via simulation. Also estimate the most common outcome (record 
+    the frequency counts for 2, 3, and 4 children, and also for 5 and above).
+    Assume that the probability p of having a boy or girl is 1/2. 
+
