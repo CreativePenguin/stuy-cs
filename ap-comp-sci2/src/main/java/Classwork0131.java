@@ -1,5 +1,3 @@
-package src.main.java;
-
 public class Classwork0131 {
 
     //map(lamda x : x == 694, data)

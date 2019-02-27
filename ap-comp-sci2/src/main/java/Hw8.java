@@ -1,8 +1,6 @@
-package src.main.java;
-
 public class Hw8 {
     public static void selectionSort(int[] data) {
-        for(int i = 0; i < data.length; i++) {
+        for(int i = 0; i < data.length - 1; i++) {
             swap(data, minIndex(data, i), i);
         }
     }
@@ -20,6 +18,34 @@ public class Hw8 {
         for(int i = index; i < data.length; i++) {
             if(min > Math.min(data[i], min)) val = i;
         }
-        return min;
+        return val;
     }
+
+    public static void bubbleShort(int[] list) {
+        final int N = list.length - 1;
+        boolean isOrdered;
+        for(int i = 0; i < N; i++) {
+            isOrdered = true;
+            for(int j = 0; j < N - i; j++) {
+                if(list[j] > list[j + 1]) {
+                    swap(list, j, j + 1);
+                    isOrdered = false;
+                }
+            }
+            if(isOrdered) break;
+        }
+    }
+
+    public static void insertionSort(int[] list) {
+        int n = list.length; 
+        for (int i=1; i<n; ++i) {
+            int key = list[i]; 
+            int j = i-1; 
+            while (j>=0 && list[j] > key) {
+                list[j+1] = list[j]; 
+                j = j-1; 
+            } 
+            list[j+1] = key; 
+        } 
+    } 
 }

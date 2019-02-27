@@ -9,11 +9,11 @@ public class Stopwatch{
 
 
     public void start(){
-	startTime = System.currentTimeMillis();
+	startTime = System.nanoTime();
     }
 
     public void stop(){
-	endTime = System.currentTimeMillis();
+	endTime = System.nanoTime();
     }
 
     public long elapsedTime(){

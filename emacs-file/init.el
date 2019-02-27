@@ -32,7 +32,7 @@
  '(fci-rule-color "#3E4451")
  '(package-selected-packages
    (quote
-    (flycheck-kotlin kotlin-mode darkokai-theme cyberpunk-theme groovy-mode scala-mode markdown-mode rust-mode python atom-one-dark-theme)))
+    (kotlin-mode darkokai-theme cyberpunk-theme groovy-mode scala-mode markdown-mode rust-mode python atom-one-dark-theme)))
  '(tetris-x-colors
    [[229 192 123]
     [97 175 239]

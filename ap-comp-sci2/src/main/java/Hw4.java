@@ -1,5 +1,3 @@
-package src.main.java;
-
 public class Hw4 {
 
     public class Anagrams {
