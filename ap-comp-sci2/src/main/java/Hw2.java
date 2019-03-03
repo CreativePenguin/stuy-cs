@@ -1,3 +1,5 @@
+package hw;
+
 public class Hw2 {
 
     private static boolean isSorted(int[] data) {

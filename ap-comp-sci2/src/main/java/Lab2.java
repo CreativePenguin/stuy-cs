@@ -1,4 +1,7 @@
+package hw;
+
 import java.util.function.Function;
+import hw.platek.Stopwatch;
 
 public final class Lab2 {
 

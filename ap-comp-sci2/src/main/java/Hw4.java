@@ -1,3 +1,5 @@
+package hw;
+
 public class Hw4 {
 
     public class Anagrams {

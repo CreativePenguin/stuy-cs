@@ -1,3 +1,5 @@
+package hw.platek;
+
 public class Stopwatch{
 
     private long startTime;

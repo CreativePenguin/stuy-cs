@@ -33,4 +33,4 @@ compileTestKotlin {
 }
 
 apply plugin: 'application'
-mainClassName = 'Lab2'
+mainClassName = 'hw.Hw9ReduceToString'

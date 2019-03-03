@@ -1,3 +1,5 @@
+package hw;
+
 public class Hw8 {
     public static void selectionSort(int[] data) {
         for(int i = 0; i < data.length - 1; i++) {

@@ -1,3 +1,5 @@
+package hw;
+
 public class Hw7 {
     
     public static void bubbleSort(int[] data) {
