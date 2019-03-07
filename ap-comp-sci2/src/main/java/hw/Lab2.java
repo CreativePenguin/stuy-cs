@@ -18,19 +18,19 @@ public final class Lab2 {
         }
 
         public double bubbleSort(int[] list) {
-            return sort(list, Hw7::bubbleSort);
+            return sort(list, hw.Hw7::bubbleSort);
         }
 
         public double bubbleShort(int[] list) {
-            return sort(list, Hw8::bubbleShort);
+            return sort(list, hw.Hw8::bubbleShort);
         }
 
         public double selectionSort(int[] list) {
-            return sort(list, Hw8::selectionSort);
+            return sort(list, hw.Hw8::selectionSort);
         }
 
         public double insertionSort(int[] list) {
-            return sort(list, Hw8::insertionSort);
+            return sort(list, hw.Hw8::insertionSort);
         }
         
         public double sort(int[] list, Sorter s) {
