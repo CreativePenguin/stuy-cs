@@ -1,0 +1,28 @@
+1)                      8
+                      /   \
+                     5     2
+                    / \   / 
+                   3   5 1
+Heap Property? Yes
+Height: 2
+Leaves: 3
+
+2)                      12
+                      /    \
+                     8      5
+                    / \    / \
+                   7   4  3   5
+                  /
+                 7
+Heap Property? Yes
+Height: 3
+Leaves: 4
+
+3)                      7
+                      /   \
+                     5     1
+                    / \   /  \
+                   4   3 2
+Heap Property? Yes
+Height: 2
+Leaves: 3
