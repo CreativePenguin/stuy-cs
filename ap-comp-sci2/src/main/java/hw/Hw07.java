@@ -1,6 +1,6 @@
 package hw;
 
-public class Hw7 {
+public class Hw07 {
     
     public static void bubbleSort(int[] data) {
         for(int i = 0; i < data.length - 2; i++) {

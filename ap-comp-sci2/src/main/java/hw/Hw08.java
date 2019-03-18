@@ -1,6 +1,6 @@
 package hw;
 
-public class Hw8 {
+public class Hw08 {
     public static void selectionSort(int[] data) {
         for(int i = 0; i < data.length - 1; i++) {
             swap(data, minIndex(data, i), i);

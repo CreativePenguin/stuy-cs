@@ -1,6 +1,6 @@
 package hw;
 
-public class Hw4 {
+public class Hw04 {
 
     public class Anagrams {
 
@@ -40,7 +40,7 @@ public class Hw4 {
     }
 
     public static void main(String[] args) {
-        Hw4.Anagrams hw = new Hw4().new Anagrams();
+        Hw04.Anagrams hw = new Hw04().new Anagrams();
         hw.isAnagram("tacocat", "cattaco");
         hw.isAnagram("Stuypulse", "StewiePlus");
         hw.isAnagram("door", "odor");
