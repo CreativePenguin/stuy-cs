@@ -33,4 +33,4 @@ compileTestKotlin {
 }
 
 apply plugin: 'application'
-mainClassName = 'hw.Lab03.java'
+mainClassName = 'hw.Lab03'
