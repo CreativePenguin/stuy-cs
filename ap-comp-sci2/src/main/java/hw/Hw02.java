@@ -1,6 +1,6 @@
 package hw;
 
-public class Hw2 {
+public class Hw02 {
 
     private static boolean isSorted(int[] data) {
         int prev = data[0];

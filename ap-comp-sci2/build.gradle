@@ -9,8 +9,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.21'
 }
 
-sourceCompatibility = '10.0.2'
-targetCompatibility = '10.0.2'
+sourceCompatibility = '11.0.2'
+targetCompatibility = '11.0.2'
 
 repositories {
     mavenCentral()
@@ -33,4 +33,4 @@ compileTestKotlin {
 }
 
 apply plugin: 'application'
-mainClassName = 'hw.Hw9ReduceToString'
+mainClassName = 'hw.Lab03'

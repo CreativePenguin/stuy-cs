@@ -2,7 +2,7 @@ package hw;
 
 import java.util.Scanner;
 
-public class Lab1 {
+public class Lab01 {
     private class TwentyQuestions {
         Scanner src = new Scanner(System.in);
         public int search(int lo, int hi) {
@@ -16,7 +16,7 @@ public class Lab1 {
         }
     }
     public static void main(String[] args) {
-        Lab1.TwentyQuestions tQuestions = new Lab1().new TwentyQuestions();
+        Lab01.TwentyQuestions tQuestions = new Lab01().new TwentyQuestions();
         int n = Integer.parseInt(args[0]);
         int N = (int) Math.pow(2,n);
         System.out.print("Think of a number: ");

@@ -1,8 +1,0 @@
-g(n) = 2nlogn + 3n^2 + n + 1
-g(n) > 2nlogn + 3n^2 + nlogn //n >= 2
-g(n) > 3nlogn + 3n^2 //n >= 2
-getting rid of the constants leads to n^2
-
-
-T(N) = T(N/2) + 1
-getting rid of the constants leads to T(N)

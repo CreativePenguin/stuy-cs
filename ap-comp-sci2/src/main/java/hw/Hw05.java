@@ -1,7 +1,7 @@
 package hw;
 
 import java.util.Arrays;
-public class Hw5 {
+public class Hw05 {
     public class Anagrams{
 
         // O(N)
@@ -82,7 +82,7 @@ public class Hw5 {
     }
 
     public static void main(String[] args) {
-        Hw5.Anagrams val = new Hw5().new Anagrams();
+        Hw05.Anagrams val = new Hw05().new Anagrams();
         val.isAnagramV3("stuypulse", "pulsestuy");
     }
 

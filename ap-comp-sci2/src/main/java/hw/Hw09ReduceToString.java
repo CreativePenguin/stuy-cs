@@ -2,11 +2,13 @@ package hw;
 
 import hw.platek.Stats;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import static java.util.Collections.max;
+import java.util.Collections;
 
-public final class Hw9ReduceToString extends Stats {
+public final class Hw09ReduceToString extends Stats {
 
     private boolean isEven(int n) { return n % 2 == 0; }
 
@@ -48,31 +50,29 @@ public final class Hw9ReduceToString extends Stats {
             if(j > prev) i++;
             counters.set(i, j);
         }
-        return max(counters);
+        return Collections.max(counters);
     }
 
     public void mergeSort(List<Number> data) {
         mergeSort(data, 0, data.size());
     }
 
-    public void mergeSort(List<Number> data, int idxA, int idxI) {
-        int mid = (idxA + idxI) / 2;
-        mergeSort(data, idxA, mid);
-        mergeSort(data, mid + 1, idxI);
-        mergeSort(data, idxA, mid, idxI);
+    public void mergeSort(List<Number> data, int l, int h) {
+        int m = (l + h) / 2;
+        mergeSort(data, l, m);
+        mergeSort(data, m + 1, l);
+        mergeSort(data, l, m, h);
     }
 
-    public void mergeSort(List<Number> data, int idxA, int mid, int idxI) {
-        int a = idxA; int b = 0; int c = 0;
-        List<Number> beginArray = new ArrayList<>(data.subList(idxA, mid));
-        List<Number> endArray = new ArrayList<>(data.subList(mid, idxI));
-        while(a < idxI) {
-            if(b == beginArray.size() - 1) ;
-            if(c == endArray.size() - 1) data.addAll(a, endArray.su)
-            int i1 = beginArray.get(b).intValue();
-            int i2 = endArray.get(c).intValue();
-            data.set(i1, Math.max(i1, i2));
-            if(i1 < i2) b++; else c++;
+    public void mergeSort(List<Number> data, int l, int m, int h) {
+        int i = 0; int j = 0; int k = 0;
+        List<Number> a = new ArrayList<>(data.subList(l, m));
+        List<Number> b = new ArrayList<>(data.subList(m + 1, h));
+        while(k < h && i < a.size() && j < b.size()) {
+            data.set(k++, a.get(i).doubleValue() > b.get(j).doubleValue() ? a.get(i++) : b.get(i++));
+        }
+        while(k < h) {
+            data.set(k++, i > j ? a.get(j++) : b.get(i++));
         }
     }
 
@@ -82,7 +82,7 @@ public final class Hw9ReduceToString extends Stats {
     }
 
     public static void main(String[] args) {
-        Hw9ReduceToString hw = new Hw9ReduceToString();
+        Hw09ReduceToString hw = new Hw09ReduceToString();
         hw.run();
     }
     

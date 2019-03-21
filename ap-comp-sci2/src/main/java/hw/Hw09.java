@@ -1,6 +1,6 @@
 package hw;
 
-public class Hw9 {
+public class Hw09 {
 
     public static int[] merge(int[] a, int[] b) {
         final int N1 = a.length;

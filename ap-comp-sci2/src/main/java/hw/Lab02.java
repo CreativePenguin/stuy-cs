@@ -3,7 +3,7 @@ package hw;
 import java.util.function.Function;
 import hw.platek.Stopwatch;
 
-public final class Lab2 {
+public final class Lab02 {
 
     private interface Sorter {
         void sort(int[] list);
@@ -11,26 +11,20 @@ public final class Lab2 {
 
     public class SortStats {
 
-        private void swap(int[] list, int i1, int i2) {
-            int tmp = list[i1];
-            list[i1] = list[i2];
-            list[i2] = tmp;
-        }
-
         public double bubbleSort(int[] list) {
-            return sort(list, hw.Hw7::bubbleSort);
+            return sort(list, hw.Hw07::bubbleSort);
         }
 
         public double bubbleShort(int[] list) {
-            return sort(list, hw.Hw8::bubbleShort);
+            return sort(list, hw.Hw08::bubbleShort);
         }
 
         public double selectionSort(int[] list) {
-            return sort(list, hw.Hw8::selectionSort);
+            return sort(list, hw.Hw08::selectionSort);
         }
 
         public double insertionSort(int[] list) {
-            return sort(list, hw.Hw8::insertionSort);
+            return sort(list, hw.Hw08::insertionSort);
         }
         
         public double sort(int[] list, Sorter s) {
@@ -113,7 +107,7 @@ public final class Lab2 {
         }
 
         public void run(int loop) {
-            Lab2.SearchStats q2 = new Lab2().new SearchStats();
+            Lab02.SearchStats q2 = new Lab02().new SearchStats();
             long[] linearTimes = new long[loop];
             long[] binaryTimes = new long[loop];
             int c = 10;
@@ -129,12 +123,12 @@ public final class Lab2 {
     }
 
     public static void main(String[] args) {
-        Lab2.SortStats q1 = new Lab2().new SortStats();
+        Lab02.SortStats q1 = new Lab02().new SortStats();
         q1.runSort("Bubble Sort", 4, q1::bubbleSort);
         q1.runSort("Bubble Short", 4, q1::bubbleShort);
         q1.runSort("Insertion Sort", 5, q1::insertionSort);
         q1.runSort("Selection Sort", 5, q1::selectionSort);
-        Lab2.SearchStats q2 = new Lab2().new SearchStats();
+        Lab02.SearchStats q2 = new Lab02().new SearchStats();
         q2.run(7);
     }
 
