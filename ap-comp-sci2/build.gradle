@@ -7,6 +7,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'application'
 }
 
 sourceCompatibility = '11.0.2'
@@ -17,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 compileKotlin {
@@ -32,5 +33,44 @@ compileTestKotlin {
     }
 }
 
-apply plugin: 'application'
-mainClassName = 'hw.platek.Sorts'
+mainClassName = 'hw.platek.SortsKt'
+
+run {
+    main = 'hw.platek.Sorts'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+application {
+    mainClassName = 'hw.platek.Sorts'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'hw.platek.Sorts'
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+//artifacts {
+//    archives runSorts
+//}
+
+task runSorts(type: JavaExec) {
+     main = 'hw.platek.Sorts'
+     classpath = sourceSets.main.runtimeClasspath
+}
+
+//task sourcesJar(type:Jar) {
+//    from hw.platek.Sorts
+//}
+
+//publishing {
+//    publications {
+//        artifact sourcesJar
+//    }
+//}
+
+//mainClassName = 'hw.'
