@@ -31,7 +31,18 @@ class Sorts {
             }
         }
 
-        
+        fun bubbleSort(li:MutableList<Number>) {
+            var isSorted = false
+            while(!isSorted) {
+                isSorted = true
+                for(i in 0 until li.size - 2) {
+                    if(li[i] > li[i + 1]) {
+                        swap(li, i, i + 1)
+                        isSorted = false
+                    }
+                }
+            }
+        }
 
         @JvmStatic
         fun main(args:Array<String>) {
