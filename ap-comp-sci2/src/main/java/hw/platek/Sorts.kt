@@ -12,14 +12,6 @@ class Sorts {
             li[i2] = tmp
         }
 
-        fun swap(li:List<Number>, i1:Int, i2:Int):List<Number> {
-            val arr = mutableListOf<Number>()
-            for(i in li) arr.add(i)
-            arr[i1] = li[i2]
-            arr[i2] = li[i1]
-            return arr
-        }
-        
         fun insertionSort(li:MutableList<Number>) {
             for(i in 1 until li.size - 1) {
                 for(j in i - 1 downTo 0) {
