@@ -36,12 +36,22 @@ class Sorts {
             }
         }
 
+        fun selectionSort(li:MutableList<Number>) {
+            for(i in 0 until li.size) {
+                var minVal = li[i]
+                for(j in i until li.size) {
+                    if(li[j] < minVal) minVal = li[j]
+                    swap(li, minVal, i)
+                }
+            }
+        }
+
         @JvmStatic
         fun main(args:Array<String>) {
             var li1:MutableList<Number> = mutableListOf(3, 4, 1, 2, 5)
             var li2:MutableList<Number> = mutableListOf(5, 2, 1, 4, 3)
             var li3:MutableList<Number> = mutableListOf(3, 5, 9, 7, 1)
-            insertionSort(li1); insertionSort(li2); insertionSort(li3)
+            bubbleSort(li1); bubbleSort(li2); bubbleSort(li3)
             println(li1); println(li2); println(li3)
         }
 
