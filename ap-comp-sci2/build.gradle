@@ -36,12 +36,12 @@ compileTestKotlin {
 mainClassName = 'hw.platek.SortsKt'
 
 run {
-    main = 'hw.platek.Sorts'
+    main = 'hw.Lab06'
     classpath = sourceSets.main.runtimeClasspath
 }
 
 application {
-    mainClassName = 'hw.platek.Sorts'
+    mainClassName = 'hw.Lab06'
 }
 
 jar {

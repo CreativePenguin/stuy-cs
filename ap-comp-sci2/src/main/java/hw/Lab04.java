@@ -1,8 +1,8 @@
 package hw;
 
-import hw.platek.stack.ArrayStack;
-import hw.platek.stack.FullStackException;
-import hw.platek.stack.MyStack;
+import hw.platek.queue.ArrayStack;
+import hw.platek.queue.FullStackException;
+import hw.platek.queue.MyStack;
 import java.util.EmptyStackException;
 
 public class Lab04<E> extends ArrayStack<E> {

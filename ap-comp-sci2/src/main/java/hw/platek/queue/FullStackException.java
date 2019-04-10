@@ -1,4 +1,4 @@
-package hw.platek.stack;
+package hw.platek.queue;
 
 public class FullStackException extends RuntimeException {
 

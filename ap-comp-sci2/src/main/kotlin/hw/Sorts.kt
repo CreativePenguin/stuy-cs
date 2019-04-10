@@ -1,5 +1,5 @@
 @file:JvmName("Sorts")
-package hw.platek
+package hw
 
 class Sorts {
 
@@ -28,7 +28,7 @@ class Sorts {
             while(!isSorted) {
                 isSorted = true
                 for(i in 0 until li.size - 2) {
-                    if(li[i] > li[i + 1]) {
+                    if(li[i].toDouble() > li[i + 1].toDouble()) {
                         swap(li, i, i + 1)
                         isSorted = false
                     }
@@ -38,11 +38,11 @@ class Sorts {
 
         fun selectionSort(li:MutableList<Number>) {
             for(i in 0 until li.size) {
-                var minVal = li[i]
+                var minVal = i
                 for(j in i until li.size) {
-                    if(li[j] < minVal) minVal = li[j]
-                    swap(li, minVal, i)
+                    if(li[j].toDouble() < li[minVal].toDouble()) minVal = j
                 }
+                swap(li, minVal, i)
             }
         }
 
@@ -51,7 +51,7 @@ class Sorts {
             var li1:MutableList<Number> = mutableListOf(3, 4, 1, 2, 5)
             var li2:MutableList<Number> = mutableListOf(5, 2, 1, 4, 3)
             var li3:MutableList<Number> = mutableListOf(3, 5, 9, 7, 1)
-            bubbleSort(li1); bubbleSort(li2); bubbleSort(li3)
+            selectionSort(li1); selectionSort(li2); selectionSort(li3)
             println(li1); println(li2); println(li3)
         }
 

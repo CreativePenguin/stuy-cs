@@ -1,4 +1,4 @@
-package hw.platek.stack;
+package hw.platek.queue;
 
 public interface MyStack<E> {
     
