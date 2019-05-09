@@ -46,16 +46,22 @@ class Sorts {
             }
         }
 
+        fun quickSort(li:MutableList<Number>) {
+            
+        }
+
         @JvmStatic
         fun main(args:Array<String>) {
-            var li1:MutableList<Number> = mutableListOf(3, 4, 1, 2, 5)
-            var li2:MutableList<Number> = mutableListOf(5, 2, 1, 4, 3)
-            var li3:MutableList<Number> = mutableListOf(3, 5, 9, 7, 1)
-            selectionSort(li1); selectionSort(li2); selectionSort(li3)
+            val li1:MutableList<Number> = mutableListOf(3, 4, 1, 2, 5)
+            val li2:MutableList<Number> = mutableListOf(5, 2, 1, 4, 3)
+            val li3:MutableList<Number> = mutableListOf(3, 5, 9, 7, 1)
+//            insertionSort(li1); insertionSort(li2); insertionSort(li3)
+//            bubbleSort(li1); bubbleSort(li2); bubbleSort(li3)
+//            selectionSort(li1); selectionSort(li2); selectionSort(li3)
             println(li1); println(li2); println(li3)
         }
 
     }
     
-    //TODO:selectionSort, bubbleSort, binarySearch, mergeSort, heapSort, quickSort
+    //TODO: mergeSort, heapSort, quickSort
 }
