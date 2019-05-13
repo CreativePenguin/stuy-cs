@@ -47,7 +47,30 @@ class Sorts {
         }
 
         fun quickSort(li:MutableList<Number>) {
-            
+            quickSortH(li, 0, li.size - 1)
+        }
+
+        fun quickSortH(li: MutableList<Number>, low:Int, high:Int) {
+            if(low < high) {
+                val pi = partition(li, low, high)
+
+                quickSortH(li, low, pi - 1)
+                quickSortH(li, pi + 1, high)
+            }
+        }
+
+        fun partition(li: MutableList<Number>, low:Int, high:Int):Int {
+            val pivot = li[high]
+//            println("pivot: $li $pivot")
+            var i = low - 1
+            for(j in low until high) {
+                if (li[j].toDouble() <= pivot.toDouble()) {
+//                    println("swap: $li ${li[j]} & ${li[i + 1]} bc ${li[j]} <= $pivot")
+                    swap(li, j, ++i)
+                }
+            }
+            swap(li, high, ++i)
+            return i
         }
 
         @JvmStatic
@@ -58,6 +81,7 @@ class Sorts {
 //            insertionSort(li1); insertionSort(li2); insertionSort(li3)
 //            bubbleSort(li1); bubbleSort(li2); bubbleSort(li3)
 //            selectionSort(li1); selectionSort(li2); selectionSort(li3)
+//            quickSort(li1); quickSort(li2); quickSort(li3)
             println(li1); println(li2); println(li3)
         }
 

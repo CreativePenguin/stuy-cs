@@ -4,26 +4,24 @@ import hw.platek.queue.DNode
 
 class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
 
-    val header:DNode<E> = DNode<E>(null, null, null)
-    val trailer:DNode<E> = DNode<E>(null,header, null)
+    private val header:DNode<E> = DNode<E>(null, null, null)
+    private val trailer:DNode<E> = DNode<E>(null,header, null)
     override var size = 0
         private set
-    val first:DNode<E>
+    private val first:DNode<E>
         get() {
-            if(isEmpty()) throw IllegalStateException("Empty List")
-            listOf(10, 10, 34)
-            return header.next
+            return header.next ?: throw IllegalStateException()
         }
-    val last:DNode<E>
+    private val last:DNode<E>
         get() {
-            if(isEmpty()) throw IllegalStateException("Empty List")
-            return trailer.getPrevious()
+            return trailer.previous ?: throw IllegalStateException()
         }
     private var current:DNode<E>
     private var counter = 0
+    private var removeable = false
 
     init {
-        header.setNext(trailer)
+        header.next = trailer
         current = header
     }
 
@@ -36,15 +34,15 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     }
 
     override fun next(): E {
-        current = current.next
+        current = current.next ?: throw NoSuchElementException()
         counter++
-        return current.value
+        return current.value ?: throw NoSuchElementException()
     }
 
     override fun previous(): E {
-        current = current.previous
+        current = current.previous ?: throw NoSuchElementException()
         counter--
-        return current.value
+        return current.value ?: throw NoSuchElementException()
     }
 
     override fun nextIndex(): Int {
@@ -63,7 +61,7 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     }
 
     override fun get(index: Int): E {
-        return getNode(index).value
+        return getNode(index).value ?: throw NoSuchElementException()
     }
 
     override fun indexOf(element: E): Int {
@@ -88,7 +86,7 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
         var tmp = trailer
         for(i in 0..size) {
             if(element == tmp.value) return i
-            tmp = tmp.previous
+            tmp = tmp.previous ?: break
         }
         return -1
     }
@@ -116,39 +114,39 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     }
 
     // returns true if v is not the header node
-    fun hasPrevious(v:DNode<E>):Boolean {
-        return !(v.getPrevious() == header)
+    fun hasPrevious(v: DNode<E>):Boolean {
+        return !(v.previous == header)
     }
 
     // returns true if v is not the trailer node
     fun hasNext(v:DNode<E>):Boolean {
-        return !(v.getNext() == trailer)
+        return !(v.next == trailer)
     }
 
     // returns the node that comes directly before the current node.
     fun getPrevious(current:DNode<E>):DNode<E> {
-        return trailer.getPrevious()
+        return current.previous ?: throw NoSuchElementException()
     }
 
     // returns the node that comes directly after the current node.
     fun getNext(current:DNode<E>): DNode<E> {
-        return current.getNext()
+        return current.next ?: throw NoSuchElementException()
     }
 
     // inserts node a before node b. 
     // An exception is thrown if b is the header
     fun addBefore(b:DNode<E>, a:DNode<E>) {
-        b.getPrevious().setNext(a)
-        a.setPrevious(b.getPrevious())
-        b.setPrevious(a)
-        a.setNext(b)
+        b.previous?.next = a
+        a.previous = b.previous
+        b.previous = a
+        a.next = b
         size++
     }
 
     fun addBefore(b:DNode<E>, value:E) {
         val ans = DNode<E>(value, b.previous, b)
-        b.previous.next = ans
-        b.next.previous = ans
+        b.previous?.next = ans
+        b.next?.previous = ans
     }
 
     fun addLast(node:DNode<E>) {
@@ -164,7 +162,7 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     // inserts node b after node a
     // throw exception if a is the trailer node
     fun addAfter(a:DNode<E>, b:DNode<E>) {
-        addBefore(a.getNext(), b)
+        addBefore(a.next, b)
         size++
     }
 
@@ -174,8 +172,8 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     }
 
     fun addFirst(value:E) {
-        header.getNext().setPrevious(header.getNext())
-        header.setNext(DNode<E>(value, header, header.getNext()))
+        header.next?.previous = header.next
+        header.next = DNode<E>(value, header, header.next)
         size++
     }
 
@@ -183,8 +181,8 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     //postconditon: removes the node v refers to.
     //              Throws exception if v is header or trailer.
     fun remove(v:DNode<E>) {
-        v.getNext().setPrevious(v.getPrevious())
-        v.getPrevious().setNext(v.getNext())
+        v.next?.previous = v.previous
+        v.previous.setNext(v.getNext())
         size--
     }
 
@@ -262,10 +260,10 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
 
     override fun toString():String {
         var ans = ""
-        var current = header.getNext()
+        var current = header.next
         while (current != trailer){
             ans += current.getValue().toString() + ", "
-            current = current.getNext()
+            current = current.next
         }
         val len = ans.length
         if (len > 0) ans = ans.substring(0,len - 2)
@@ -284,4 +282,3 @@ class LinkedList<E>:List<E>,Iterator<E>,ListIterator<E> {
     }
 
 }
-

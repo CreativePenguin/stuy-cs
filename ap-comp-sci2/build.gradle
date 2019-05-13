@@ -33,8 +33,6 @@ compileTestKotlin {
     }
 }
 
-mainClassName = 'hw.platek.SortsKt'
-
 run {
     main = 'hw.platek.platek.Node'
     classpath = sourceSets.main.runtimeClasspath
@@ -46,7 +44,7 @@ application {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'hw.platek.Sorts'
+        attributes 'Main-Class': 'hw.Sorts'
     }
 
     from {
@@ -59,7 +57,7 @@ jar {
 //}
 
 task runSorts(type: JavaExec) {
-     main = 'hw.platek.Sorts'
+     main = 'hw.Sorts'
      classpath = sourceSets.main.runtimeClasspath
 }
 

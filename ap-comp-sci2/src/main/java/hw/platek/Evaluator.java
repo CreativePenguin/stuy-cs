@@ -2,7 +2,7 @@ package hw.platek;
 
 import java.util.Stack;
 
-public class Evaluator{
+public class Evaluator {
 
     private static String getOperators() {
         return "+-*/%sqrt";
@@ -28,9 +28,9 @@ public class Evaluator{
     // postcondition: evalutes the expression represented in expTokens
     //             ex. evaluate(["(","5","-","2.2",")"]) returns 2.8
     public static Double evaluate(String[] expTokens) {
-        Stack<String> operators = new Stack();
-        Stack<Double> operands = new Stack();
-        Stack<Integer> parenIndex = new Stack();
+        Stack<String> operators = new Stack<>();
+        Stack<Double> operands = new Stack<>();
+        Stack<Integer> parenIndex = new Stack<>();
         double val = 0;
         for(int i = 0; i < expTokens.length; i++) {
             if(expTokens[i].equals(")"))
@@ -41,7 +41,7 @@ public class Evaluator{
                 }
             }
         }
-        return new Double(val);
+        return val;
     }
 
     public static boolean sieve(String s) {

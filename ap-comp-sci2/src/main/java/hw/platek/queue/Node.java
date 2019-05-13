@@ -17,7 +17,7 @@ public class Node<E> {
 
     public static int max(Node<Integer> p) {
         int val = 0;
-        maxH(p, val);
+        return maxH(p, val);
     }
 
     private static int maxH(Node<Integer> p, int val) {
