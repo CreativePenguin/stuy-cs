@@ -146,6 +146,12 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+target/
+
+# Ignore vim & emacs
+*.swp
+\#*\#
+Session.vim
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
