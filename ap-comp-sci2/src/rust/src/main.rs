@@ -3,6 +3,6 @@ use int_bst::IntBST;
 
 fn main() {
     let mut bst = IntBST::new();
-    bst.add(10); bst.add(15); bst.add(3);
-    bst.inorder; bst.preorder; bst.postorder;
+    bst.addR(10); bst.addR(15); bst.addR(3);
+    bst.inorder(); bst.preorder(); bst.postorder();
 }

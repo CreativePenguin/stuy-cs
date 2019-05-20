@@ -2,7 +2,7 @@ public class IntBST{
 
     // instance variables
     private TreeNode<Integer> root;
-    private int size; 
+    private int size;
 
     private static class TreeNode<Integer> {
         private Integer value;
@@ -20,7 +20,7 @@ public class IntBST{
         public Integer getValue() { return value;}
         public TreeNode<Integer> getLeft() {return left;}
         public TreeNode<Integer> getRight() {return right;}
-  
+
         // mutators
         public void setLeft(TreeNode<Integer> n) { left = n;}
         public void setRight(TreeNode<Integer> n) { right = n;}
@@ -37,13 +37,13 @@ public class IntBST{
         root = add(x,root);
         size++;
     }
-    
+
     private TreeNode<Integer> add(Integer x, TreeNode<Integer> rt){
         if (rt == null)
             rt = new TreeNode<Integer>(x,null,null);
         else if (x <= rt.getValue())
             rt.setLeft(add(x,rt.getLeft()));
-        else 
+        else
             rt.setRight(add(x,rt.getRight()));
         return rt;
     }
