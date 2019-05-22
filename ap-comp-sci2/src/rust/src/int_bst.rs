@@ -104,9 +104,19 @@ impl IntBST {
         }
     }
 
+    fn remove(&mut self, val:isize) -> bool {
+        match &mut self.root {
+            Some(node) => {
+                let tmp = &mut node;
+                removeR(tmp, tmp, &TreeNode::new(val), true)
+            },
+            None => false,
+        }
+    }
+
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct TreeNode {
     val: isize,
     left: Option<Box<TreeNode>>,
@@ -127,6 +137,78 @@ impl TreeNode {
             (None, None) => true,
             _ => false,
         }
+    }
+}
+
+fn maxNode(rt:&TreeNode) -> &TreeNode {
+    let mut ans = rt;
+    loop {
+        match &ans.right {
+            Some(node) => ans = &*node,
+            None => break,
+        }
+    }
+    ans
+}
+
+fn minNode(rt:&TreeNode) -> &TreeNode {
+    let mut ans = rt;
+    loop {
+        match &ans.left {
+            Some(node) => ans = &*node,
+            None => break,
+        }
+    }
+    ans
+}
+
+fn remove(root:&TreeNode, target:&TreeNode) -> bool {
+    let mut leader = root;
+    let mut follower = root;
+    let mut isRight = true;
+    loop {
+        if target.val > leader.val {
+            match &leader.right {
+                Some(boxed) => {
+                    follower = leader;
+                    leader = &*boxed;
+                    isRight = true;
+                    continue;
+                },
+                None => return false,
+            }
+        } else if target.val < leader.val {
+            match &leader.left {
+                Some(boxed) => {
+                    follower = leader;
+                    leader = &*boxed;
+                    isRight = false;
+                    continue;
+                },
+                None => return false,
+            }
+        } else {
+            if isRight {follower.right = None; return true;}
+            else {follower.left = None; return true;}
+        }
+    }
+}
+
+fn removeR(prev:&TreeNode, root:&TreeNode, target:&TreeNode, isRight:bool) -> bool {
+    if target.val > root.val {
+        match &root.right {
+            Some(node) => removeR(&root, &*node, target, true),
+            None => false,
+        }
+    } else if target.val < root.val {
+        match &root.left {
+            Some(node) => removeR(&root, &*node, target, false),
+            None => false,
+        }
+    } else {
+        if isRight {prev.right = None;}
+        else {prev.left = None;}
+        true
     }
 }
 
