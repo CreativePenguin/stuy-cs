@@ -1,8 +1,10 @@
+package hw;
+
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class HashST<K,V>{
+public class Lab07<K,V>{
 
   private static class Node{
     private Object key;
@@ -47,7 +49,7 @@ public class HashST<K,V>{
   private Node[] buckets;
   private HashSet<K> keys;
     
-  public HashST(int capacity){
+  public Lab07(int capacity){
     m = capacity;
     buckets = new Node[m];
     keys = new HashSet<K> ();
@@ -119,7 +121,7 @@ public class HashST<K,V>{
   }
     
   public static void main(String [] args){
-    HashST<String, Integer> d = new HashST<String, Integer> (13);
+    Lab07<String, Integer> d = new Lab07<String, Integer> (13);
   }
 
 }

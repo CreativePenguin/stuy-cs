@@ -34,7 +34,7 @@ compileTestKotlin {
 }
 
 run {
-    main = 'hw.platek.platek.Node'
+    main = 'hw.Lab07'
     classpath = sourceSets.main.runtimeClasspath
 }
 
