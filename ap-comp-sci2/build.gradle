@@ -61,6 +61,11 @@ task runSorts(type: JavaExec) {
      classpath = sourceSets.main.runtimeClasspath
 }
 
+task runExam(type: JavaExec) {
+    main = "hw.exam.Test"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 //task sourcesJar(type:Jar) {
 //    from hw.platek.Sorts
 //}
