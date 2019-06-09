@@ -84,7 +84,7 @@ statement, I used a while loop to continue calling readLine until it was null.
 Inside the while loop, I used the method readLine() to convert each letter to
 morse/english.
 
-### readLine()
+#### readLine()
 
 This method accepts a string as an input. It first checks to see if it is morse
 or english by checking to see if the first letter is an english character or a
@@ -94,7 +94,7 @@ through the list, and converts each of its values. If the value is not found in
 the map, then it is just transferred directly (this is for spaces). All english
 is converted to uppercase. Then it returns the variable.
 
-### run()
+#### run()
 
 This will just print out a statement, asking the user to input the line. It
 uses a scanner to store their input, and uses readLine() to convert their
