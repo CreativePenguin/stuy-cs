@@ -1,3 +1,5 @@
+package hw.platek;
+
 public class IntBST{
 
     // instance variables
