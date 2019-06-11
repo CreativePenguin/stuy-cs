@@ -23,22 +23,23 @@ object PointClient {
     println("Input points, (parenthesis to divide points, comma to distinguish b/w x and y")
     val src = Scanner(System.`in`);
     val input = src.nextLine().replace("\\s".toRegex(), "")
-    if(!verifyInput(input)) throw IllegalArgumentException()
+    val verifyInput = verifyInput(input)
+    if(!verifyInput.first) throw IllegalArgumentException(verifyInput.second)
     return returnPoints(input)
   }
   
-  private fun verifyInput(userInput:String):Boolean {
+  private fun verifyInput(userInput:String):Pair<Boolean, String> {
     var openParen = 0
     var prev:Char = ' '
     for(i in userInput) {
-      if(!(i in validInputs)) return false
+      if(!(i in validInputs)) return Pair(false, "invalid char")
       if(i == '(') openParen++
       if(i == ')') openParen--
-      if(prev == ',' && !(i in numbers)) return false
+      if(prev == ',' && !(i in numbers)) return Pair(false, "misplaced comma")
       prev = i
     }
-    if(openParen != 0) return false
-    return true
+    if(openParen != 0) return Pair(false, "unequal parenthesis")
+    return (true, "it works")
   }
   
   private fun returnPoints(userInput:String):MutableList<Point> {
