@@ -4,9 +4,14 @@ import java.io.BufferedReader
 import java.io.FileReader
 import java.util.Scanner
 
-class Point(x:Int, y:Int) {
+class Point(x:Double, y:Double) {
   var x = x
   var y = y
+}
+
+class Equation(yIntercept:Double, slope:Double) {
+  val yIntercept:Double = yIntercept
+  val slope:Double = slope
 }
 
 object PointClient {
