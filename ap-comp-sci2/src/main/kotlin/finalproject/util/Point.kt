@@ -1,4 +1,4 @@
-package finalproject
+package finalproject.util
 
 import java.io.BufferedReader
 import java.io.FileReader
@@ -12,6 +12,10 @@ class Point(x:Double, y:Double) {
 class Equation(yIntercept:Double, slope:Double) {
   val yIntercept:Double = yIntercept
   val slope:Double = slope
+  operator fun compareTo(other:Equation):Int {
+    return if(other.slope > slope) -1 else if(other.slope < slope) 1 else
+      if(other.yIntercept > yIntercept) -1 else if(other.yIntercept < yIntercept) 1 else 0
+  }
 }
 
 object PointClient {
@@ -39,7 +43,7 @@ object PointClient {
       prev = i
     }
     if(openParen != 0) return Pair(false, "unequal parenthesis")
-    return (true, "it works")
+    return Pair(true, "it works")
   }
   
   private fun returnPoints(userInput:String):MutableList<Point> {
@@ -48,7 +52,7 @@ object PointClient {
     var prev = ""
     for(i in splitUserInput) {
       if(prev != "") {
-          ans.add(Point(i.toInt(), prev.toInt()))
+          ans.add(Point(i.toDouble(), prev.toDouble()))
       }
     }
     return ans
@@ -61,11 +65,11 @@ object PointClient {
     val ans = mutableListOf<Point>()
     while(line != null) {
       line = fileReader.readLine()
-      if (verifyInput(line)) {
+      if (verifyInput(line).first) {
         var prev = ""
         for(i in line.split(",")) {
           if(prev != "") {
-            ans.add(Point(i.toInt(), prev.toInt()))
+            ans.add(Point(i.toDouble(), prev.toDouble()))
           }
         } 
       }
