@@ -57,7 +57,7 @@ jar {
 //}
 
 task runSorts(type: JavaExec) {
-     main = 'hw.Sorts'
+     main = 'finalproject.util.Sorts'
      classpath = sourceSets.main.runtimeClasspath
 }
 
