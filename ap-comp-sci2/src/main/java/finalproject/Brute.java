@@ -7,7 +7,16 @@ import java.util.List;
 import finalproject.util.Equation;
 import finalproject.util.Point;
 
-public class CollinearPoints {
+public class Brute {
+    
+    private static Brute instance;
+    
+    private Brute() {}
+    
+    public Brute getInstance() {
+        return instance == null ? new Brute() : instance;
+    }
+    
     public List<Equation> bruteForce(Point[] points) {
         int counter = 0; 
         List<Equation> equations = new ArrayList<>();
@@ -29,4 +38,12 @@ public class CollinearPoints {
         return new Equation(slope, yintercept);
     }
     
+    private <E> boolean numInListExceeds(List<E> li, E val, int num) {
+        int valCounter = 0;
+        for(E i : li) {
+            if(i.equals(val)) valCounter++;
+        }
+        return valCounter >= num;
+    }
+
 }
