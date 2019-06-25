@@ -34,7 +34,7 @@ compileTestKotlin {
 }
 
 run {
-    main = 'hw.Lab07'
+    main = 'finalproject.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
 

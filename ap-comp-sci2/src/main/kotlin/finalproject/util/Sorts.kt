@@ -83,6 +83,7 @@ object Sorts {
         return (Math.ceil(index / 2.0) - 1).toInt()
     }
 
+    @JvmStatic
     fun <T: Comparable<T>> mergeSort(li:MutableList<T>) {
         mergeSort(li, 0, li.size)
     }

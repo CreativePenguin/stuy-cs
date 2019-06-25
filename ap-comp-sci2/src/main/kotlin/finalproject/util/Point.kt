@@ -25,7 +25,7 @@ object PointClient {
 
     fun run():MutableList<Point> {
         println("Input points, (parenthesis to divide points, comma to distinguish b/w x and y")
-        val src = Scanner(System.`in`);
+        val src = Scanner(System.`in`)
         val input = src.nextLine().replace("\\s".toRegex(), "")
         val verifyInput = verifyInput(input)
         if(!verifyInput.first) throw IllegalArgumentException(verifyInput.second)
