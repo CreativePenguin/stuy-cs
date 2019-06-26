@@ -18,12 +18,12 @@ public class Brute {
         return instance == null ? new Brute() : instance;
     }
     
-    public List<Equation> bruteForce(Point[] points) {
+    public List<Equation> findCollinearPoints(List<Point> points) {
         int counter = 0; 
         List<Equation> equations = new ArrayList<>();
         for(Point i : points) {
             counter++;
-            for(Point j : Arrays.copyOfRange(points, counter, points.length)) {
+            for(Point j : points.subList(counter, points.size())) {
                 equations.add(calcSlopeAndYIntercept(i, j));
             }
         }
