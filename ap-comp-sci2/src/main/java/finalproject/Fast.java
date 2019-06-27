@@ -45,9 +45,11 @@ public class Fast {
     
     public List<Equation> findCollinearEquations(List<Point> points) {
         int counter = 0;
-        for(Point i : points) {
+        for(Point i : points.subList(0, points.size() - 1)) {
+            counter++;
             sortPointsByAngle(points.subList(counter, points.size()), i);
         }
+        return null;
     }
     
 }
