@@ -1,0 +1,3 @@
+[submodule "softdev"]
+	path = softdev
+	url = git@github.com:CreativePenguin/stuyvesant-soft-dev.git

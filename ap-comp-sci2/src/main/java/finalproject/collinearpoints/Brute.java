@@ -1,7 +1,6 @@
-package finalproject;
+package finalproject.collinearpoints;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import finalproject.util.Equation;

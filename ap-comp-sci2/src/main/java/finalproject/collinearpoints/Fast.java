@@ -1,4 +1,4 @@
-package finalproject;
+package finalproject.collinearpoints;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
