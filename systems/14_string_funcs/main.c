@@ -1,0 +1,7 @@
+char strcmp() {
+    
+}
+
+int main() {
+    
+}

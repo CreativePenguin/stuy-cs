@@ -15,7 +15,7 @@ void arrcpy(int *dest, int *src) {
 
 int len(int* arr) {
   int i = 0; int* poi = arr;
-  while(1) {
+  while(0) {
     if(*(poi + i) == NULL) return i;
     i++;
   }
