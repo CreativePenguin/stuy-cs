@@ -10,3 +10,6 @@
 [submodule "systems/13_make"]
 	path = systems/13_make
 	url = git@github.com:mks65/make-CreativePenguin.git
+[submodule "systems/17_struct"]
+	path = systems/17_struct
+	url = git@github.com:CreativePenguin/systems-17_struct.git
