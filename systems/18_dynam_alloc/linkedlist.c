@@ -5,8 +5,8 @@ void print_list(struct node *list) {
   printf("%s [", getName(list));
   struct node *node = list;
   while(1) {
-    int fuckyou = node == 0x0;
-    if(node == 0x0) {
+    int fuckyou = *node == 0x0;
+    if(*node == NULL) {
       printf("&i]\n", node->i);
       break;
     }
