@@ -25,15 +25,29 @@ struct node * insert_front(struct node *list, int val) {
 }
 
 struct node * free_list(struct node *list) {
+  if(!list) return NULL;
+  printf("Freeing list:\n");
   struct node * prev = list;
   struct node * node = list->next;
-  free(prev);
+  free_nullify(prev);
   while(1) {
-    if(!node) break;
+    if(!node || !node->next) break;
     prev = node;
     node = node->next;
-    free(prev);
+    free_nullify(prev);
   }
+  if(node) {
+    free_nullify(node);
+    return NULL;
+  }
+  if(node->next) free_nullify(node->next);
+  return NULL;
+}
+
+void free_nullify(struct node *val) {
+  printf("Freeing node: %d\n", val->i);
+  free(val);
+  val = NULL;
 }
 
 /*
