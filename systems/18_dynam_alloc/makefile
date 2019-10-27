@@ -1,9 +1,9 @@
 build: main.o linkedlist.o
 	gcc -g -o prog main.o linkedlist.o
 main.o: main.c linkedlist.h
-	gcc -c main.c
+	gcc -g -c main.c
 linkedlist.o: linkedlist.h linkedlist.c
-	gcc -c linkedlist.c
+	gcc -g -c linkedlist.c
 run:
 	./prog
 clean:

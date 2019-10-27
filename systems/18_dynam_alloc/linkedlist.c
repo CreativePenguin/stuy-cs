@@ -1,17 +1,19 @@
 #include "linkedlist.h"
-# define getName(var) #var
 
 void print_list(struct node *list) {
-  printf("%s [", getName(list));
-  struct node *node = list;
+  printf("list [%d", list->i);
+  int tmp = -1;
+  struct node *node = list->next;
+  //struct node *node = calloc(1, sizeof(struct node));
+  //node = list->next;
   while(1) {
-    int fuckyou = *node == 0x0;
-    if(*node == NULL) {
-      printf("&i]\n", node->i);
+    if(!node) {
+      printf("]\n");
+      //free(node);
       break;
     }
-    printf("%i, ", node->i);
-    node = list->next;
+    printf(", %d", node->i);
+    node = node->next;
   }
 }
 
@@ -27,7 +29,7 @@ struct node * free_list(struct node *list) {
   struct node * node = list->next;
   free(prev);
   while(1) {
-    if(node == NULL) break;
+    if(!node) break;
     prev = node;
     node = node->next;
     free(prev);
