@@ -13,12 +13,22 @@ int main() {
   li2->i = 2;
   li2->next = li1;
   print_list(li2);
-  struct node *li3 = malloc(sizeof(struct node));
+
+  struct node * li3 = malloc(sizeof(struct node));
   li3 = insert_front(li2, 3);
   printf("Add 3 to front\n");
-  print_list(li3);
+  struct node * li4 = malloc(sizeof(struct node));
+  li4 = insert_front(li3, 4);
+  printf("Add 4 to front\n");
+  print_list(li4);
+  struct node * li5 = malloc(sizeof(struct node));
+  li5 = insert_front(li4, 5);
+  printf("Add 5 to front\n");
+  print_list(li5);
+
+  remove_data(li5, 3);
   //free_list(li2);
   //free_list(li1);
-  free_list(li3);
+  free_list(li5);
   return 0;
 }

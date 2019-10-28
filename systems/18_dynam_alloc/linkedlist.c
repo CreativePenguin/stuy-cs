@@ -50,6 +50,25 @@ void free_nullify(struct node *val) {
   val = NULL;
 }
 
+struct node * remove_data(struct node *front, int data) {
+  struct node * prev = front;
+  struct node * next = front->next;
+  if(front->i == data && front->next) {
+    free_nullify(front);
+    return front->next;
+  }
+  while(next) {
+    if(next->i == data) {
+      prev->next = next->next;
+      free_nullify(next);
+      return front;
+    }
+    prev = next;
+    if(!next->next) return front;
+    next = next->next;
+  }
+}
+
 /*
 int * get_vals(struct node *list) {
   int *arr = malloc(10 * sizeof(int));
