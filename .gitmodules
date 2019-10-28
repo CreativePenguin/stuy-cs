@@ -13,3 +13,6 @@
 [submodule "systems/17_struct"]
 	path = systems/17_struct
 	url = git@github.com:CreativePenguin/systems-17_struct.git
+[submodule "systems/18_dynam_alloc"]
+	path = systems/18_dynam_alloc
+	url = git@github.com:CreativePenguin/stuy-cs-systems-18_dynam_alloc.git
