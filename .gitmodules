@@ -1,18 +1,21 @@
 [submodule "softdev"]
 	path = softdev
 	url = git@github.com:CreativePenguin/stuyvesant-soft-dev.git
-[submodule "systems/03_euler"]
-	path = systems/03_euler
+[submodule "systems/work_03_euler"]
+	path = systems/work_03_euler
 	url = git@github.com:mks65/euler-CreativePenguin.git
-[submodule "systems/09_array"]
-	path = systems/09_array
+[submodule "systems/work_09_array"]
+	path = systems/work_09_array
 	url = git@github.com:mks65/array-swap-CreativePenguin.git
-[submodule "systems/13_make"]
-	path = systems/13_make
+[submodule "systems/work_13_make"]
+	path = systems/work_13_make
 	url = git@github.com:mks65/make-CreativePenguin.git
-[submodule "systems/17_struct"]
-	path = systems/17_struct
+[submodule "systems/work_17_struct"]
+	path = systems/work_17_struct
 	url = git@github.com:CreativePenguin/systems-17_struct.git
-[submodule "systems/18_dynam_alloc"]
-	path = systems/18_dynam_alloc
+[submodule "systems/work_18_dynam_alloc"]
+	path = systems/work_18_dynam_alloc
 	url = git@github.com:CreativePenguin/stuy-cs-systems-18_dynam_alloc.git
+[submodule "systems/proj_00_my_tunes"]
+	path = systems/proj_00_my_tunes
+	url = git@github.com:mwalden00/Systems_Song_Node.git
