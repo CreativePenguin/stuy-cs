@@ -19,3 +19,6 @@
 [submodule "systems/proj_00_my_tunes"]
 	path = systems/proj_00_my_tunes
 	url = git@github.com:mwalden00/Systems_Song_Node.git
+[submodule "systems/work_19_randfile"]
+	path = systems/work_19_randfile
+	url = git@github.com:CreativePenguin/stuy-cs-systems-work_19_randfile.git
