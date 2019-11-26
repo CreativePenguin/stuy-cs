@@ -1,0 +1,70 @@
+#+title: Executive Decisions
+* The Exec  family - <unistd.h>
+A group of c functions that can be used to run other programs.
+
+** execl
+#+BEGIN_SRC c
+/**
+ * Replaces the current process with the new program
+ * @param path Path of command
+ * @param command Name of program
+ * @param arg0 command line args to give to prog (-a, -l). Ends with NULL
+ */
+execl(char *path, char *command, char *arg0, arg1 _ NULL)
+execl("/bin/ls", "ls", "-a", "-l", NULL);
+#+END_SRC
+
+** execlp
+#+BEGIN_SRC c
+/**
+ * Basically execl, except it will check PATH
+ */
+execlp(path, command, arg0, arg1);
+execlp("ls", "ls", "-a", "-l", NULL);
+#+END_SRC
+
+** execvp
+
+#+BEGIN_SRC c
+/**
+ * @param argument_array - Array of strings containing the arguments to command.
+ * argument_array[0] must be the name of command 
+*/
+execvp(path, argument_array);
+char *cmd[4] = {"ls", "-a", "-l", NULL};
+execvp(cmd[0], cmd);
+#+END_SRC
+* strsep - <string.h>
+** strsep
+Parse a string with a common delimiter
+#+BEGIN_SRC c
+/**
+ * Locates the first occurence of any specified delimiters in a string and 
+ * replaces it with NULL
+ * @param source - set to string starting at 1 index past new NULL
+                   char ** because will modify actual value
+		   char is "w", char * is pointer to "w", char ** is actual
+		     thing char points to
+ * @param delimiters - each char interpreted as a distinct delimiter
+ * @return beginning of the original string
+ */
+strsep(char **source, char *delimiters)
+#+END_SRC
+
+*** Example
+Replaces the "-" after woah with NULL
+returns a pointer to the "w" in "woah"
+sets curr to point to the t in "this-is-cool"
+#+BEGIN_SRC c
+char line[100] = "woah-this-is-cool";
+char *curr = line;
+char *token;
+token = strsep(&curr,"-"); //token = "woah", curr = "this-is-cool"
+#+END_SRC
+
+* Terminal Info
+#+BEGIN_SRC shellscript
+which ls # prints out the directory ls is located in
+# Always prints out the one that's run when you type the script
+./hello # Tells the terminal not to search PATH for script
+#+END_SRC
