@@ -28,3 +28,6 @@
 [submodule "systems/work_21_dirinfo"]
 	path = systems/work_21_dirinfo
 	url = git@github.com:CreativePenguin/stuy-cs-systems-06_dirinfo.git
+[submodule "systems/work_22_parse_args"]
+	path = systems/work_22_parse_args
+	url = git@github.com:CreativePenguin/stuy-cs-systems-work_07_parse_args.git
