@@ -108,24 +108,29 @@ which ls # prints out the directory ls is located in
 * Managing Sub-Processes -- 11/26/2019
 ** fork -- unistd.h
 #+BEGIN_SRC c
-#include <unistd.h>
+  #include <unistd.h>
 
-/**
- * Creates a child subprocess (duplicate of parent -- stack and heap copied)
- * @return 0 & child's pid, or -1 (errno) to parent
-*/
-fork()
+  /**
+   ,* Creates a child subprocess (duplicate of parent -- stack and heap copied)
+   ,* @return 0 & child's pid, or -1 (errno) to parent
+  ,*/
+  fork()
 
-//example
-#include <stdio.h>
-printf("pre-fork pid: %d", getpid());
-f = fork();
-if(f) {
-  printf("parent pid: %d, f: %d\n", getpid(), f);
-} else {
-  printf("child pid: %d, parent: %d f: %d\n", getpid(), getppid(), f);
-  // if getppid() returns 1, then it is an orphan process -- no parent process
-}
+  //example
+  #include <stdio.h>
+  printf("pre-fork pid: %d", getpid());
+  f = fork();
+  int status;
+  if(f) {
+    printf("parent pid: %d, f: %d\n", getpid(), f);
+    child = wait(&status)
+    printf("wait returned: %d status: %d return value: %d\n", child, status, WEXITSTATUS(status));
+    // Will also return the signal it got (11 = segfault)
+  } else {
+    printf("child pid: %d, parent: %d f: %d\n", getpid(), getppid(), f);
+    // if getppid() returns 1, then it is an orphan process -- no parent process
+    // 1 is the orphan process that is always running
+  }
 #+END_SRC
 ** wait -- <sys/wait.h>
 
@@ -134,18 +139,17 @@ if(f) {
 
 /**
  * Stops a child process from running until any child has exited
- * @return
+ * @param status - Represented by 4 bytes, base 256
+ * @return - Returns pid of child that exited, or -1 (errno) + gathers info about child process (reaping)
+ *           IF multiple child processes exit, rand one will be reaped
 */
-wait()
+wait(status)
 #+END_SRC
-
-* man
-#+TOC: headlines 4
-** unistd.h
-
-** stdio.h
-
-** stdlib.h
-
-** sys
-*** wait.h
+*** Status macros
+#+BEGIN_SRC c
+MACRO(status)
+WIFEEXITED // True if child exited normally
+WEXITSTATUS // The return value of the child
+WIFSIGNALLED // True if child exited due to a signal
+WTERMSIG
+#+END_SRC
