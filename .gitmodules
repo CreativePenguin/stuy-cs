@@ -31,3 +31,6 @@
 [submodule "systems/work_22_parse_args"]
 	path = systems/work_22_parse_args
 	url = git@github.com:CreativePenguin/stuy-cs-systems-work_07_parse_args.git
+[submodule "systems/proj_01_shell"]
+	path = systems/proj_01_shell
+	url = git@github.com:CreativePenguin/stuy-cs-systems-p1_shell.git
