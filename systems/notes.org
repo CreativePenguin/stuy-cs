@@ -1,8 +1,21 @@
-#+TITLE: Systems Notes
+#jTITLE: Systems Notes
 
 #+OPTIONS: toc:nil
 
-#+TOC: headlines 2
+* Table of Contents                                       :TOC_2_gh:noexport:
+- [[#signal-handling----11242019][Signal Handling -- 11/24/2019]]
+  - [[#sending-mixed-signals][Sending Mixed Signals]]
+- [[#executive-decisions----11252019][Executive Decisions -- 11/25/2019]]
+  - [[#the-exec--family---unistdh][The Exec  family - <unistd.h>]]
+  - [[#strsep---stringh][strsep - <string.h>]]
+  - [[#terminal-info][Terminal Info]]
+- [[#managing-sub-processes----11262019][Managing Sub-Processes -- 11/26/2019]]
+  - [[#fork----unistdh][fork -- unistd.h]]
+  - [[#wait----syswaith][wait -- <sys/wait.h>]]
+- [[#navigating-the-shell----12032019][Navigating The Shell -- 12/03/2019]]
+  - [[#commands-that-cant-work-in-sub-processes][Commands that can't work in sub processes]]
+  - [[#syntax][Syntax]]
+
 * Signal Handling -- 11/24/2019
 ** Sending Mixed Signals
 *** Signal handling in c programs <signal.h>
