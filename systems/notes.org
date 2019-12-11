@@ -1,4 +1,4 @@
-#jTITLE: Systems Notes
+#+TITLE: Systems Notes
 
 #+OPTIONS: toc:nil
 
@@ -173,3 +173,37 @@ cd & exit -- Both are designed to edit the parent process.
 ** Syntax
 ; means the same thing that it does in java/c
 pipeline taks the input of one thing, and passes it on to the next
+* Pipe
+A conduit between 2 separate processes on the same computer
+Pipes have 2 ends, a read end and a write end
+Pipes exist in memory
+** pipe - <unistd.h>
+#+BEGIN_SRC c
+/**
+ * Create an unnamed pipe
+ * @return 0 if the pipe was created, -1 if not
+*/
+pipe(int descriptors[2])
+#+END_SRC
+*** Example Code
+#+BEGIN_SRC c
+#define READ 0
+#define WRITE 1
+int fds[2];
+pipe(fds);
+
+printf("fds[0]: %d\n", fds[0]);
+printf("fds[1]: %d\n", fds[1]);
+
+f = fork();
+if(f) {
+  char line[100];
+  printf("parent: getting info from child...\n");
+  read(fds[READ], line, sizeof(line));
+  printf("parent: received [%s]\n", line);
+} else P
+  printf("child: sending info to parent. \n");
+  sleep(10);
+  write(fds[WRITE], "hello!", 7);
+}
+#+END_SRC
