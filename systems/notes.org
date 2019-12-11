@@ -137,7 +137,8 @@ which ls # prints out the directory ls is located in
   if(f) {
     printf("parent pid: %d, f: %d\n", getpid(), f);
     child = wait(&status)
-    printf("wait returned: %d status: %d return value: %d\n", child, status, WEXITSTATUS(status));
+    printf("wait returned: %d status: %d return value: %d\n", 
+           child, status, WEXITSTATUS(status));
     // Will also return the signal it got (11 = segfault)
   } else {
     printf("child pid: %d, parent: %d f: %d\n", getpid(), getppid(), f);
