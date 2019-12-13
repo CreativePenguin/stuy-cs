@@ -1,7 +1,5 @@
 #+TITLE: Systems Notes
 
-#+OPTIONS: toc:nil
-
 * Table of Contents                                       :TOC_2_gh:noexport:
 - [[#signal-handling----11242019][Signal Handling -- 11/24/2019]]
   - [[#sending-mixed-signals][Sending Mixed Signals]]
@@ -178,7 +176,8 @@ pipeline taks the input of one thing, and passes it on to the next
 A conduit between 2 separate processes on the same computer
 Pipes have 2 ends, a read end and a write end
 Pipes exist in memory
-** pipe - <unistd.h>
+** Unnamed Pipes
+*** pipe - <unistd.h>
 #+BEGIN_SRC c
 /**
  * Create an unnamed pipe
@@ -208,3 +207,39 @@ if(f) {
   write(fds[WRITE], "hello!", 7);
 }
 #+END_SRC
+** Named pipes
+- Are FIFOs (works like a queue), but data isn't stored
+#+BEGIN_SRC shell
+mkfifo
+#+END_SRC
+- Creats a fifo
+- After a connection is established, sends signal to stop other end
+  if read/write end is terminated
+- Unidirectional
+
+*** mkfifo - <sys/types.h> <sys/stat.h>
+#+BEGIN_SRC c
+/**
+ * c function to create a FIFO
+ * Once created, FIFO acts like a regular file -- can use open
+ * FIFO will block on open until both ends of pipe have connection
+ * @return 0 on success, -1 on failure
+*/
+mkfifo(char *name, int *permissions)
+#+END_SRC
+
+*** Exmaple Code
+#+BEGIN_SRC c
+int main() {
+  int fd;
+  char line[100];
+
+  mkfifo("mario", 0644);
+  fd = open("mario", 0_RDONLY);
+  printf("fifo open!\n");
+  while( read(fd, line, sizeof(line))) 
+    printf("read: [%s]\n", line);
+  return 0;
+}
+#+END_SRC
+
