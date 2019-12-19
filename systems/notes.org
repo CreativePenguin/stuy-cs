@@ -172,7 +172,7 @@ cd & exit -- Both are designed to edit the parent process.
 ** Syntax
 ; means the same thing that it does in java/c
 pipeline taks the input of one thing, and passes it on to the next
-* Pipe
+* Pipe -- 12/12/2019
 A conduit between 2 separate processes on the same computer
 Pipes have 2 ends, a read end and a write end
 Pipes exist in memory
@@ -228,7 +228,7 @@ mkfifo
 mkfifo(char *name, int *permissions)
 #+END_SRC
 
-*** Exmaple Code
+*** Example Code
 #+BEGIN_SRC c
 int main() {
   int fd;
@@ -242,4 +242,141 @@ int main() {
   return 0;
 }
 #+END_SRC
+* Shared Memory -- 12/16/2019
+  A segment of heap memory that can be accessed by multiple processes
+  Shared memory is accessed via key (no file table entry)
+  Shared memory doesn't get released when a prog exits
+  Eg. Named Pipes
+  `ipcs -m`
 
+#+BEGIN_SRC c
+#include <sys/ipc.h>
+
+#define KEY 24601;
+#define SEG_SIZE
+
+int main() {
+  int *data;
+  int shmd;
+  char input[3];
+
+  shmd = shmget(KEY, SEG_SIZE, IPC_CREAT | 0640);
+  printf("shmd: %d\n", shmd);
+
+  data = shmat(shmd, 0, 0); //Can treat this like any other part of mem
+
+  if(!(*data))
+    printf("No data\n");
+  else
+    printf("data: %s\n", data);
+  printf("Modify segment? (y/n)");
+  fgets(data, SEG_SIZE, stdin);
+  *strchr(data, '\n') = 0;
+  printf("data: %d\n", data);
+
+  shmdt(data); //Removes 
+
+  printf("Would you like to remove the segment? (y/n) ");
+  //printf("*data: %d\n", *data); SEGFAULT
+
+  //remove segment from actual memory
+  systemctl(shmd, IPC_RMID, 0);
+  return 0;
+}
+#+END_SRC
+** 5 Shared Memory Operations
+   1. Create the segment (happens once) - [[#shmget][shmget]]
+   2. Access the segment (happens once per process) - [[#shmget][shmget]]
+   3. Attatch the segment to a variable (once per process) - shmat
+   4. Detatch the segment from a variable (once per process) - shmdt
+   5. Remove the segment (happens once) - shmctl
+** <sys/shm.h> -- shared memory
+#+NAME: shmget
+#+BEGIN_SRC c
+/*
+ * Create the segment/accesses segment
+ * @param key - identifying value for shared memory
+ * @param size - Size of memory allocated (# of bytes)
+ * @param shmflags - IPC_CREAT, IPC_EXCL
+*/
+shmget(key_t key, size_t size, int shmflag);
+
+/*
+ * Attatch the segment to a variable
+*/
+shmat(int shmid, 0, 0);// Unless you know what you're doing, just put 0, 0
+#+END_SRC
+
+** <sys/ipc.h>
+   IPC_CREAT: Create a new segment
+   IPC_EXCL: Used with IPC_CREAT. If seg already exists, call fails
+#+BEGIN_SRC sh
+ipcs -m #Check table for shared memory segments
+ipcrm #Remove ipc
+#+END_SRC
+
+* Semaphores -- 12/17/2019
+  IPC Construct used to control access to a shared resource
+  Semaphore used as a counter (num processes can concurrently access resource)
+  If a semaphore has a value of 3, it can have 3 active users (0 if unavail)
+  Semaphore operations are "atomic" (won't be multiple processor instructions)
+  `ipcs -m`
+** Semaphore Operations
+   1. Create a semaphore
+   2. Set an initial value
+   3. Remove a semaphore
+   4. Release semaphore when done -- Up(S) / V(S) (atomic)
+   5. Attempt to take semaphore (wait until >0) -- Down(S) / P(S) (atomic)
+      #+BEGIN_SRC c
+       //Pseudocode
+       while(S == 0) { block } S--;
+      #+END_SRC
+** Function overview
+   #+BEGIN_SRC c
+   /**
+    * 
+   */
+   semdget(int KEY, int num, int flags);
+   #+END_SRC
+** Example Code
+   Creating the semaphore
+   #+BEGIN_SRC c
+   int main() {
+     #define KEY 139234  //Can't be the same as shared memory key
+     int semd; int r; int v;
+     semd = semget(KEY, 1, IPC_CREAT | IPC_EXCL | 0644);
+     //Checks to see if you're trying to create prexisting semaphore
+     if(semd == -1) {
+       printf("error %d: %s\n", errno, strerror(errno));
+       semd = semget(KEY, 1, 0);
+       v = semctl(semd, 0, GETVAL, 0); //not atomic, get semaphore val
+       printf("semctl returned %d\n", v);
+     } else {
+       ///Union is like a struct, except all the values are modified together
+       ///Will need to recreate the union in header
+       ///Find union in `man semctl`
+       union semun us;
+       us.val = 1;
+       r = semctl(semd, 0, SETVAL, us);
+       printf("semctl returned: %d\n", r);
+     }
+   }
+   #+END_SRC
+   Using the semaphore
+   #+BEGIN_SRC c
+   int main() {
+     int semd; int r; int v;
+     semd = semget(KEY, 1, 0);
+     struct sembuf sb;
+     sb.sem_num = 0; //semaphore location in sem array
+     sb.sem_op = -1; //down semaphore
+
+     sb.sem_op = -1;
+     semop(semd, &sb, 1);
+     printf("got the semaphore!\n");
+     sleep(10); //simulate hard work
+
+     sb.sem_op = 1; //up semaphore
+     semop(semd, &sb, 1); //detatch semaphore
+   }
+   #+END_SRC
