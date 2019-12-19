@@ -13,95 +13,103 @@
 - [[#navigating-the-shell----12032019][Navigating The Shell -- 12/03/2019]]
   - [[#commands-that-cant-work-in-sub-processes][Commands that can't work in sub processes]]
   - [[#syntax][Syntax]]
+- [[#pipe----12122019][Pipe -- 12/12/2019]]
+  - [[#unnamed-pipes][Unnamed Pipes]]
+  - [[#named-pipes][Named pipes]]
+- [[#shared-memory----12162019][Shared Memory -- 12/16/2019]]
+  - [[#5-shared-memory-operations][5 Shared Memory Operations]]
+  - [[#sysshmh----shared-memory][<sys/shm.h> -- shared memory]]
+  - [[#sysipch][<sys/ipc.h>]]
+- [[#semaphores----12172019][Semaphores -- 12/17/2019]]
+  - [[#semaphore-operations][Semaphore Operations]]
+  - [[#function-overview][Function overview]]
+  - [[#example-code][Example Code]]
 
 * Signal Handling -- 11/24/2019
 ** Sending Mixed Signals
 *** Signal handling in c programs <signal.h>
-- sighandler
-- To intercept signals in a c program, you must create a signal 
-handling function.
-- Some signals (like SIGKILL, SIGSTOP) cannot be caught
-#+BEGIN_SRC c
-static void sighandler(int signo)
-#+END_SRC
-- Static values in c exist outside the normal call stack, 
-they can be accessed regardless of the function on top
-- For variables, this also means they retain their values even if
-the function they are declared in has ended.
-- Static variables (variables and functions) can only 
-be accessed from within the file they are declared
-#+BEGIN_SRC c
-static void sighandler(int signo) {
-  if(signo == SIGINT) prinf("haha! can't touch this!\n");
-  if(signo == SIGSEV) printf("nothing to see here..\n");
-}
+    - sighandler
+    - To intercept signals in a c program, you must create a signal 
+    handling function.
+    - Some signals (like SIGKILL, SIGSTOP) cannot be caught
+    #+BEGIN_SRC c
+      static void sighandler(int signo)
+    #+END_SRC
+    - Static values in c exist outside the normal call stack, 
+    they can be accessed regardless of the function on top
+    - For variables, this also means they retain their values even if
+    the function they are declared in has ended.
+    - Static variables (variables and functions) can only 
+    be accessed from within the file they are declared
+    #+BEGIN_SRC c
+      static void sighandler(int signo) {
+        if(signo == SIGINT) prinf("haha! can't touch this!\n");
+        if(signo == SIGSEV) printf("nothing to see here..\n");
+      }
 
-int main() {
-  signal(SIGINT, sighandler);
-  signal(SIGSEGV, sighandler);
-}
-#+END_SRC
-#+BEGIN_SRC c
-exit(0); exit(1); //Exits program, use exit(1) if error
-#+END_SRC
+      int main() {
+        signal(SIGINT, sighandler);
+        signal(SIGSEGV, sighandler);
+      }
+    #+END_SRC
+    #+BEGIN_SRC c
+      exit(0); exit(1); //Exits program, use exit(1) if error
+    #+END_SRC
 
 * Executive Decisions -- 11/25/2019
 ** The Exec  family - <unistd.h>
-A group of c functions that can be used to run other programs.
+   A group of c functions that can be used to run other programs.
 
 *** execl
-#+BEGIN_SRC c
-/**
- * Replaces the current process with the new program
- * @param path Path of command
- * @param command Name of program
- * @param arg0 command line args to give to prog (-a, -l). Ends with NULL
- */
-execl(char *path, char *command, char *arg0, arg1 _ NULL)
-execl("/bin/ls", "ls", "-a", "-l", NULL);
-#+END_SRC
-
+    #+BEGIN_SRC c
+      /**
+       ,* Replaces the current process with the new program
+       ,* @param path Path of command
+       ,* @param command Name of program
+       ,* @param arg0 command line args to give to prog (-a, -l). Ends with NULL
+       ,*/
+      execl(char *path, char *command, char *arg0, arg1 _ NULL);
+      execl("/bin/ls", "ls", "-a", "-l", NULL);
+    #+END_SRC
 *** execlp
-#+BEGIN_SRC c
-/**
- * Basically execl, except it will check PATH
- */
-execlp(path, command, arg0, arg1);
-execlp("ls", "ls", "-a", "-l", NULL);
-#+END_SRC
-
+    #+BEGIN_SRC c
+      /**
+       ,* Basically execl, except it will check PATH
+       ,*/
+      execlp(path, command, arg0, arg1);
+      execlp("ls", "ls", "-a", "-l", NULL);
+       #+END_SRC
 *** execvp
-
-#+BEGIN_SRC c
-/**
- * @param argument_array - Array of strings containing the arguments to command.
- * argument_array[0] must be the name of command 
-*/
-execvp(path, argument_array);
-char *cmd[4] = {"ls", "-a", "-l", NULL};
-execvp(cmd[0], cmd);
-#+END_SRC
+    #+BEGIN_SRC c
+      /**
+       ,* @param argument_array - Array of strings containing the arguments to command.
+       ,* argument_array[0] must be the name of command 
+       ,*/
+      execvp(path, argument_array);
+      char *cmd[4] = {"ls", "-a", "-l", NULL};
+      execvp(cmd[0], cmd);
+    #+END_SRC
 ** strsep - <string.h>
 *** strsep
-Parse a string with a common delimiter
-#+BEGIN_SRC c
-/**
- * Locates the first occurence of any specified delimiters in a string and 
- * replaces it with NULL
- * @param source - set to string starting at 1 index past new NULL
-                   char ** because will modify actual value
-		   char is "w", char * is pointer to "w", char ** is actual
-		     thing char points to
- * @param delimiters - each char interpreted as a distinct delimiter
- * @return beginning of the original string
- */
-strsep(char **source, char *delimiters)
+    Parse a string with a common delimiter
+	#+BEGIN_SRC c
+    /**
+     ,* Locates the first occurence of any specified delimiters in a string and 
+     ,* replaces it with NULL
+     ,* @param source - set to string starting at 1 index past new NULL
+                       char ** because will modify actual value
+           char is "w", char * is pointer to "w", char ** is actual
+             thing char points to
+     ,* @param delimiters - each char interpreted as a distinct delimiter
+     ,* @return beginning of the original string
+     ,*/
+    strsep(char **source, char *delimiters)
 #+END_SRC
 
 *** Example
-Replaces the "-" after woah with NULL
-returns a pointer to the "w" in "woah"
-sets curr to point to the t in "this-is-cool"
+    Replaces the "-" after woah with NULL
+    returns a pointer to the "w" in "woah"
+    sets curr to point to the t in "this-is-cool"
 #+BEGIN_SRC c
 char line[100] = "woah-this-is-cool";
 char *curr = line;
@@ -110,7 +118,7 @@ token = strsep(&curr,"-"); //token = "woah", curr = "this-is-cool"
 #+END_SRC
 
 ** Terminal Info
-#+BEGIN_SRC shellscript
+#+BEGIN_SRC sh
 which ls # prints out the directory ls is located in
 # Always prints out the one that's run when you type the script
 ./hello # Tells the terminal not to search PATH for script
@@ -167,11 +175,11 @@ WTERMSIG
 #+END_SRC
 * Navigating The Shell -- 12/03/2019
 ** Commands that can't work in sub processes
-cd & exit -- Both are designed to edit the parent process.
-(calling cd on a child process won't change the directory)
+   cd & exit -- Both are designed to edit the parent process.
+   (calling cd on a child process won't change the directory)
 ** Syntax
-; means the same thing that it does in java/c
-pipeline taks the input of one thing, and passes it on to the next
+   ; means the same thing that it does in java/c
+   pipeline taks the input of one thing, and passes it on to the next
 * Pipe -- 12/12/2019
 A conduit between 2 separate processes on the same computer
 Pipes have 2 ends, a read end and a write end
