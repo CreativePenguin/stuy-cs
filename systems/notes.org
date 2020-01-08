@@ -431,3 +431,5 @@ ipcrm #Remove ipc
    - Protocol (2)
    - Port (65536) -- Allows multiple sockets
    - Incoming/outgoing address (IP Address) -- only one
+** Example Code
+   Find example code in eg_networking file
