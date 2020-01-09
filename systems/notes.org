@@ -209,7 +209,7 @@ if(f) {
   printf("parent: getting info from child...\n");
   read(fds[READ], line, sizeof(line));
   printf("parent: received [%s]\n", line);
-} else P
+} else {
   printf("child: sending info to parent. \n");
   sleep(10);
   write(fds[WRITE], "hello!", 7);
