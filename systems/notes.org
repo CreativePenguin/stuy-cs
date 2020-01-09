@@ -388,3 +388,48 @@ ipcrm #Remove ipc
      semop(semd, &sb, 1); //detatch semaphore
    }
    #+END_SRC
+* Server/Client Design Patterns -- 1/3/2020
+  1. Peer to Peer Program
+     C1 <-> C0
+     - Direct connection btwn clients
+     - Good for well structured interactions
+  2. Single Server
+     |    | S  |    |
+     | ^  | ^  | ^  |
+     | C0 | C1 | C2 |
+     - 1 server
+     - Handles all connections
+     - Handles all communication
+     - Good for a chat
+  3. Forking server
+     |     | S |     |
+     | SS0 |   | SS1 |
+     | ^   |   | ^   |
+     | C0  |   | C1  |
+     - One main server
+       - Handles all connections
+       - Creates subserver to handle all communication
+     - Used where there doesn't need to be communication between clients
+       - Not good for game involving more than one player
+* Networking -- 1/6/2020
+  - In order for 2 computers to exchange data:
+    - OSI 7 layer model:
+      - Application layer (your program) to
+      - Network layer (multiple networks interact with sockets)
+      - Local network (has mac address associated with network card)
+      - Physical layer (most concrete) (Physical cable)
+    - TCP connections:
+      - TCP socket guarantees you get data in order you send.
+	Data may be sent out of order
+      - If missing parts it can request extra data
+** Socket
+   A piece of memory used to send data (similar to pipe)
+   Each port can connect to one socket
+   Never use a port under 1023 (likely reserved)
+   Eg. webservers only connect to port 80
+
+   - Protocol (2)
+   - Port (65536) -- Allows multiple sockets
+   - Incoming/outgoing address (IP Address) -- only one
+** Example Code
+   Find example code in eg_networking file

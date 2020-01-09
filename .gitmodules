@@ -37,3 +37,6 @@
 [submodule "systems/work_23_semaphore"]
 	path = systems/work_23_semaphore
 	url = git@github.com:CreativePenguin/stuy-cs-systems-w08_semaphore.git
+[submodule "systems/proj_02_final"]
+	path = systems/proj_02_final
+	url = git@github.com:CreativePenguin/stuy-cs-systems-p2_final.git
