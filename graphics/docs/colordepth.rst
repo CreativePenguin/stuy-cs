@@ -1,7 +1,8 @@
 ****************************************
 Peering into the depths of color -- 1/28
 ****************************************
-*Color Depth*\ : The amount of data used to represent a single pixel
+**Color Depth**\ : The amount of data used to represent a single pixel
+
 .. csv-table::
    :header: "Size", "Color Options", "Description"
    :widths: 5, 30, 20
@@ -15,16 +16,53 @@ Peering into the depths of color -- 1/28
 
 Defining Color
 ##############
-*RGBA*\ : Red, Green, Blue, Alpha (transparency)
-*HSB*\ : Hue, Saturation (how deep color is), Brightness
-.. image:: hsb.jpg
+**RGBA**\ : Red, Green, Blue, Alpha (transparency)
+**HSB**\ : Hue, Saturation (how deep color is), Brightness
+
+.. image:: hsb.jpeg
    :width: 400px
    :align: center
 
 Image File Formats
 ####################
 Raster vs Vector
-Vector formats represent images as a series of drawing instructions. (*.svg -- Scalable Vector Graphics)
-Raster formats represent images as a grid of pixels (think how a tv updates)
-Uncompressed vs. compressed
-Compressed images contain data for each pixel
+**Vector** formats represent images as a series of drawing instructions. (*.svg -- Scalable Vector Graphics)
+**Raster** formats represent images as a grid of pixels (think how a tv updates)
+
+Uncompressed vs. compressed (Raster)
+**Uncompressed images** contain data for each pixel (BMP, TIFF, RAW)
+**Compressed formats** use a compression algorithm to minimize file size
+
+Lossless vs Lossy
+Lossless compression algorithms contain enough info to exatly recreate the original image (PNG -- Portable Network Graphics, GIF -- Graphics Interchage Format)
+Lossy compression algorithms do not retain all the details of the original image (JPEG -- Joint Photographic Experts Group)
+
+**PPM (Portable PixMap)**\: Uncompressed raster format (RGB triplets in ascii or binary)::
+
+   P3 (or P6 if you're writing in binary)
+   5 5 (pixel len and width of file)
+   255
+   255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
+   255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
+   255 255 0 255 255 0 255 0 255 255 255 0 255 255 0
+   255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
+   255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
+
+.. raw:: html
+
+   <embed>
+     <script>
+       var myImageData = ctx.createImageData(5px, 5px);
+     </script>
+   <img src="intropic.ppm"
+     
+   </embed>
+
+.. image:: intropic.ppm
+   :width: 200px
+   :align: center
+   :height: 100px
+   :alt: alternate text
+
+
+``convert`` is a useful tool to convert images between formats
