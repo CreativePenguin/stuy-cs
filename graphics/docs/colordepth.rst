@@ -54,8 +54,7 @@ Lossy compression algorithms do not retain all the details of the original image
      <script>
        var myImageData = ctx.createImageData(5px, 5px);
      </script>
-   <img src="intropic.ppm"
-     
+     <!-- https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas -->
    </embed>
 
 .. image:: intropic.ppm
