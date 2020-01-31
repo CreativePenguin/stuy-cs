@@ -25,19 +25,19 @@ Defining Color
 
 Image File Formats
 ####################
-Raster vs Vector
-**Vector** formats represent images as a series of drawing instructions. (*.svg -- Scalable Vector Graphics)
-**Raster** formats represent images as a grid of pixels (think how a tv updates)
-
-Uncompressed vs. compressed (Raster)
-**Uncompressed images** contain data for each pixel (BMP, TIFF, RAW)
-**Compressed formats** use a compression algorithm to minimize file size
-
-Lossless vs Lossy
-Lossless compression algorithms contain enough info to exatly recreate the original image (PNG -- Portable Network Graphics, GIF -- Graphics Interchage Format)
-Lossy compression algorithms do not retain all the details of the original image (JPEG -- Joint Photographic Experts Group)
-
-**PPM (Portable PixMap)**\: Uncompressed raster format (RGB triplets in ascii or binary)::
+| Raster vs Vector
+| **Vector** formats represent images as a series of drawing instructions. (*.svg -- Scalable Vector Graphics)
+| **Raster** formats represent images as a grid of pixels (think how a tv updates)
+| 
+| Uncompressed vs. compressed (Raster)
+| **Uncompressed images** contain data for each pixel (BMP, TIFF, RAW)
+| **Compressed formats** use a compression algorithm to minimize file size
+| 
+| Lossless vs Lossy
+| Lossless compression algorithms contain enough info to exatly recreate the original image (PNG -- Portable Network Graphics, GIF -- Graphics Interchage Format)
+| Lossy compression algorithms do not retain all the details of the original image (JPEG -- Joint Photographic Experts Group)
+| 
+| **PPM (Portable PixMap)**\: Uncompressed raster format (RGB triplets in ascii or binary)::
 
    P3 (or P6 if you're writing in binary)
    5 5 (pixel len and width of file)
@@ -47,15 +47,6 @@ Lossy compression algorithms do not retain all the details of the original image
    255 255 0 255 255 0 255 0 255 255 255 0 255 255 0
    255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
    255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
-
-.. raw:: html
-
-   <embed>
-     <script>
-       var myImageData = ctx.createImageData(5px, 5px);
-     </script>
-     <!-- https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas -->
-   </embed>
 
 .. image:: intropic.ppm
    :width: 200px
