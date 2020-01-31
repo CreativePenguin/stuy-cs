@@ -48,7 +48,7 @@ Image File Formats
    255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
    255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
 
-.. image:: intropic.ppm
+.. image:: intropic.jpeg
    :width: 200px
    :align: center
    :height: 100px
