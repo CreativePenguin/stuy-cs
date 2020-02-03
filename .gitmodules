@@ -40,3 +40,6 @@
 [submodule "systems/proj_02_final"]
 	path = systems/proj_02_final
 	url = git@github.com:CreativePenguin/stuy-cs-systems-p2_final.git
+[submodule "graphics/w00_picmaker"]
+	path = graphics/w00_picmaker
+	url = git@github.com:CreativePenguin/stuy-cs-graphics-w00_picmaker.git
