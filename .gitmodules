@@ -1,6 +1,6 @@
 [submodule "softdev"]
 	path = softdev
-	url = git@github.com:CreativePenguin/stuyvesant-soft-dev.git
+	url = git@github.com:CreativePenguin/stuyvesant-softdev.git
 [submodule "systems/work_03_euler"]
 	path = systems/work_03_euler
 	url = git@github.com:mks65/euler-CreativePenguin.git
