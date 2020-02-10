@@ -28,9 +28,9 @@ Formulas
 | f(x + 1, y + .5)
 |   if 0, MP on line, pick one option
 |   if pos, MP is below line, pick(x + 1, y + 1)
-|   if neg, MP above line, pick (x + 1, y)
+|   if neg, MP above line, pick (x + 1, y)::
 
-.. code-block::
+Part 1:
    x = x0, y = y0
    while x <= x1
      plot(x, y)
@@ -40,10 +40,8 @@ Formulas
      y = y + 1
    x = x + 1
 
-.. code-block::
+Part 2:
    plot(x, y)
    d = f(x + 1, y + .5)
    if d > 0
      y++
-
-Test, code blocks aren't being included.
