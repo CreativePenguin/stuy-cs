@@ -9,10 +9,10 @@ Peering into the depths of color -- 1/28
 
    "1 bit", "1 color, on | off"
    "2 bit", "1 color with intensity"
-   "3 bit", "red, green, and blue"
-   "4 bit", "red, green, blue, and transparency"
-   "8 bit",
-   "24 bit", "true color"
+   "3 bit", "red, green, and blue (8 colors)"
+   "4 bit", "red, green, blue, and intensity"
+   "6 bit", "red, green, blue, with individual intensity"
+   "3 byte", "R G B, each with 256 values"
 
 Defining Color
 ##############
