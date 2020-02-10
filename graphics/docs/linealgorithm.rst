@@ -15,14 +15,14 @@ Algorithm is basically:
 1. Loop through x0 to x1
 2. TEST(x + 1, y) TEST(x + 1, y + 1)
 3. Pick best point
-   
+
 Formulas
 ********
 
 .. seealso:: y = mx + b => Ax + By + C = 0
 	     A = dy, B = -dx, C = dx / b
 	     Variables gotten by simplifying y = mx + b to Ax + By + C
-	     
+
 | f(x, y) = Ax + By + C
 | (x + 1, y + .5) -- Midpoint of our options
 | f(x + 1, y + .5)
@@ -45,3 +45,5 @@ Formulas
    d = f(x + 1, y + .5)
    if d > 0
      y++
+
+Test, code blocks aren't being included.

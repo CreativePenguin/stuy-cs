@@ -43,3 +43,6 @@
 [submodule "graphics/w00_picmaker"]
 	path = graphics/w00_picmaker
 	url = git@github.com:CreativePenguin/stuy-cs-graphics-w00_picmaker.git
+[submodule "graphics/w02_line"]
+	path = graphics/w02_line
+	url = git@github.com:CreativePenguin/stuy-cs-graphics-w02_line.git
