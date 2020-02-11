@@ -37,8 +37,9 @@ Image File Formats
 | Lossless compression algorithms contain enough info to exatly recreate the original image (PNG -- Portable Network Graphics, GIF -- Graphics Interchage Format)
 | Lossy compression algorithms do not retain all the details of the original image (JPEG -- Joint Photographic Experts Group)
 |
-| **PPM (Portable PixMap)**\: Uncompressed raster format (RGB triplets in ascii or binary)::
+| **PPM (Portable PixMap)**\: Uncompressed raster format (RGB triplets in ascii or binary)
 
+.. code-block:: python
    P3 (or P6 if you're writing in binary)
    5 5 (pixel len and width of file)
    255
@@ -48,10 +49,10 @@ Image File Formats
    255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
    255 255 0 255 255 0 255 255 0 255 255 0 255 255 0
 
-.. image:: intropic.jpeg
-   :width: 200px
-   :align: center
-   :height: 100px
+.. image:: intropic.png
+   :width: 5px
+   :align: left
+   :height: 5px
    :alt: alternate text
 
 
