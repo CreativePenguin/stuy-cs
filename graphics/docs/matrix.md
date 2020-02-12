@@ -30,6 +30,7 @@ Ex.
 ```
 
 Note, the average matrix should look like this:  
+> The 1 1 1 there on the bottom is boilerplate code
 ```
 [x0 x1 xN]
 [y0 y1 yN]
