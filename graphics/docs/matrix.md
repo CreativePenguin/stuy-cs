@@ -14,7 +14,7 @@
 
 The column of the first = the row of the second
 Set Z to zero for now
-Make sure that if you're coding in C, make the matrixes doubles
+Make sure that if you're coding in C, make the matrixes doubles  
 Note that this example is basically `matrix * itself`, if you multiply by a zero
 matrix, it will erase your entire matrix  
 ```
@@ -30,7 +30,8 @@ Ex.
 ```
 
 Note, the average matrix should look like this:  
-> The 1 1 1 there on the bottom is boilerplate code
+> The `[1 1 1]` needs to be there through the entire matrix, put it there for now,
+explanation for why will come later
 ```
 [x0 x1 xN]
 [y0 y1 yN]
