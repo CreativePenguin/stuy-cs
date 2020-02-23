@@ -46,3 +46,6 @@
 [submodule "graphics/w02_line"]
 	path = graphics/w02_line
 	url = git@github.com:CreativePenguin/stuy-cs-graphics-w02_line.git
+[submodule "graphics/w03_matrix"]
+	path = graphics/w03_matrix
+	url = git@github.com:CreativePenguin/stuy-cs-graphics-w03_matrix.git
