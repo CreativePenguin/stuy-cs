@@ -1,7 +1,10 @@
 site_name: Systems & Graphics Notes
 nav:
         - Home: index.md
+        - Colors: colordepth.md
+        - Line: linealgorithm.md
         - Matrix: matrix.md
         - Transformations: transformations.md
         - Parametric: parametric.md
+        - Splines: splines.md
 theme: readthedocs
