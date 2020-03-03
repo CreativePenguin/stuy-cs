@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Transformations - Systems & Graphics Notes</title>
+  <title>Line - Systems & Graphics Notes</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Transformations";
-    var mkdocs_page_input_path = "transformations.md";
+    var mkdocs_page_name = "Line";
+    var mkdocs_page_input_path = "linealgorithm.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -55,26 +55,20 @@
                     <li class="toctree-l1"><a class="reference internal" href="../colordepth/">Colors</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../linealgorithm/">Line</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Line</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#formulas">Formulas</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../matrix/">Matrix</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Transformations</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#scale">Scale</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#translate">Translate</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#rotate">Rotate</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#combining-transformations">Combining Transformations</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../transformations/">Transformations</a>
                     </li>
                 </ul>
                 <ul>
@@ -106,7 +100,7 @@
     
       
     
-    <li>Transformations</li>
+    <li>Line</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -117,61 +111,43 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="transformations-224">Transformations -- 2/24</h1>
-<ul>
-<li>Scale, Translate, Rotate</li>
-<li>Applied as matrix multiplication</li>
-</ul>
-<h2 id="scale">Scale</h2>
-<ul>
-<li>Scale <code>(x, y, z) --&gt; (ax, by, cz)</code></li>
-</ul>
-<pre><code>[a 0 0 0][x] = [ax]
-[0 b 0 0][y] = [by]
-[0 0 c 0][z] = [cz]
-[0 0 0 1][1] = [1]
-</code></pre>
+                <h1 id="line-algorithm">Line Algorithm</h1>
+<p>Input: 2 pixel endpoints. Output: Line that connects two inputs<br />
+Problem: in order for line to be accurate, it would need to be able to
+draw on the subpixel level, which is impossible<br />
+Potential Solutions: Test Potential Pixels, iterate through potential
+pixels</p>
+<p><img alt="octants" src="../images/octants.jpg" /></p>
+<p>Today's task will be to develop a line algorithm that only works in
+octant I.<br />
+Thus, we only need to turn on one pixel per x</p>
+<p>Algorithm is basically: 1. Loop through x0 to x1 2. TEST(x + 1, y)
+TEST(x + 1, y + 1) 3. Pick best point</p>
+<h2 id="formulas">Formulas</h2>
+<div class="seealso">
 
-<p>This will also cause the shape to shift as well</p>
-<h2 id="translate">Translate</h2>
-<ul>
-<li>Transform <code>(x, y, z) --&gt; (x + a, y + b, z + c)</code></li>
-</ul>
-<pre><code>[1 0 0 a][x] = [x + a]
-[0 1 0 a][y] = [y + b]
-[0 0 1 a][z] = [z + c]
-[0 0 0 1][1] = [  1  ]
-</code></pre>
+y = mx + b =\> Ax + By + C = 0 A = dy, B = -dx, C = dx / b Variables
+gotten by simplifying y = mx + b to Ax + By + C
 
-<h2 id="rotate">Rotate</h2>
-<ul>
-<li>Rotate z axis <code>(x, y, z) --&gt; (xcost - ysint, xsint + ycost, z)</code></li>
-</ul>
-<pre><code>[cost -sint 0 0][x]
-[sint cost  0 0][y]
-[  0    0   1 0][z]
-[  0    0   0 1][1]
-</code></pre>
+</div>
 
+<p>f(x, y) = Ax + By + C<br />
+(x + 1, y + .5) -- Midpoint of our options<br />
+f(x + 1, y + .5)<br />
+  if 0, MP on line, pick one option<br />
+  if pos, MP is below line, pick(x + 1, y + 1)<br />
+  if neg, MP above line, pick (x + 1, y)::</p>
 <ul>
-<li>Rotate x axis <code>(x, y, z) --&gt; (x, ycost - zsint, ysint + zcost)</code></li>
+<li>
+<p>Part 1:<br />
+    x = x0, y = y0 while x \&lt;= x1 plot(x, y) d0 = f(x + 1, y + 1) d1 =
+    f(x + 1, y) if abs(d0) \&lt; abs(d1) y = y + 1 x = x + 1</p>
+</li>
+<li>
+<p>Part 2:<br />
+    plot(x, y) d = f(x + 1, y + .5) if d > 0 y++</p>
+</li>
 </ul>
-<pre><code>[1  0     0   0][x]
-[1 cost -sint 0][y]
-[1 sint  cost 0][z]
-[1  0     0   1][1]
-</code></pre>
-
-<ul>
-<li>Rotate y axis <code>(x, y, z) --&gt; (xcost + zsint, y, -xsint + zcost)</code></li>
-</ul>
-<pre><code>[-sint 0 cost 0]
-[  0   1  0   0]
-[ cost 0 sint 0]
-[  0   0  0   1]
-</code></pre>
-
-<h2 id="combining-transformations">Combining Transformations</h2>
               
             </div>
           </div>
@@ -179,10 +155,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../parametric/" class="btn btn-neutral float-right" title="Parametric">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../matrix/" class="btn btn-neutral float-right" title="Matrix">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../matrix/" class="btn btn-neutral" title="Matrix"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../colordepth/" class="btn btn-neutral" title="Colors"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -208,10 +184,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../matrix/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../colordepth/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../parametric/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../matrix/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

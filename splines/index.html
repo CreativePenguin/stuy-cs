@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Transformations - Systems & Graphics Notes</title>
+  <title>Splines - Systems & Graphics Notes</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Transformations";
-    var mkdocs_page_input_path = "transformations.md";
+    var mkdocs_page_name = "Splines";
+    var mkdocs_page_input_path = "splines.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -63,26 +63,28 @@
                     <li class="toctree-l1"><a class="reference internal" href="../matrix/">Matrix</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Transformations</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#scale">Scale</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#translate">Translate</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#rotate">Rotate</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#combining-transformations">Combining Transformations</a>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../transformations/">Transformations</a>
                     </li>
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../parametric/">Parametric</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../splines/">Splines</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Splines</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#bezier">Bezier</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#line">Line</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quadratric">Quadratric</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hermite">Hermite</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -106,7 +108,7 @@
     
       
     
-    <li>Transformations</li>
+    <li>Splines</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -117,61 +119,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="transformations-224">Transformations -- 2/24</h1>
+                <h1 id="splines-332020">Splines -- 3/3/2020</h1>
 <ul>
-<li>Scale, Translate, Rotate</li>
-<li>Applied as matrix multiplication</li>
+<li>Curves (cubic) that appeared to be smooth/continuous</li>
 </ul>
-<h2 id="scale">Scale</h2>
-<ul>
-<li>Scale <code>(x, y, z) --&gt; (ax, by, cz)</code></li>
-</ul>
-<pre><code>[a 0 0 0][x] = [ax]
-[0 b 0 0][y] = [by]
-[0 0 c 0][z] = [cz]
-[0 0 0 1][1] = [1]
-</code></pre>
-
-<p>This will also cause the shape to shift as well</p>
-<h2 id="translate">Translate</h2>
-<ul>
-<li>Transform <code>(x, y, z) --&gt; (x + a, y + b, z + c)</code></li>
-</ul>
-<pre><code>[1 0 0 a][x] = [x + a]
-[0 1 0 a][y] = [y + b]
-[0 0 1 a][z] = [z + c]
-[0 0 0 1][1] = [  1  ]
-</code></pre>
-
-<h2 id="rotate">Rotate</h2>
-<ul>
-<li>Rotate z axis <code>(x, y, z) --&gt; (xcost - ysint, xsint + ycost, z)</code></li>
-</ul>
-<pre><code>[cost -sint 0 0][x]
-[sint cost  0 0][y]
-[  0    0   1 0][z]
-[  0    0   0 1][1]
-</code></pre>
-
-<ul>
-<li>Rotate x axis <code>(x, y, z) --&gt; (x, ycost - zsint, ysint + zcost)</code></li>
-</ul>
-<pre><code>[1  0     0   0][x]
-[1 cost -sint 0][y]
-[1 sint  cost 0][z]
-[1  0     0   1][1]
-</code></pre>
-
-<ul>
-<li>Rotate y axis <code>(x, y, z) --&gt; (xcost + zsint, y, -xsint + zcost)</code></li>
-</ul>
-<pre><code>[-sint 0 cost 0]
-[  0   1  0   0]
-[ cost 0 sint 0]
-[  0   0  0   1]
-</code></pre>
-
-<h2 id="combining-transformations">Combining Transformations</h2>
+<h2 id="bezier">Bezier</h2>
+<p>Defined By: 2 Endpoints (P0, P3)<br />
+            2 Influence Points(P1, P2)<br />
+<img alt="bezier_demo.jpg" src="../images/bezier_ex.jpg" />
+Influence points pull the curve<br />
+Quadratic curve would only have on influence point  </p>
+<h3 id="line">Line</h3>
+<p><img alt="parametric_line.jpg" src="../images/parametric_line.jpg" />
+Pt = (1 - t)P0 + tP1</p>
+<h3 id="quadratric">Quadratric</h3>
+<p><img alt="quadratic.jpg" src="images/quadratic.jpg" />
+Q = (1 - t)Q0 + tQ1
+Q0t = (1 - t)P0 + tP1
+Q1t = (1 - t)P1 + tP2
+Qt = (1 - t)[(1 - t)P0 + tP1] + t[(1 - t)P1 + tP2]
+Qt = (1 - t)^2 * P0 + t(1 - t)P1 + t(1 - t)p1 + t^2P2</p>
+<h2 id="hermite">Hermite</h2>
               
             </div>
           </div>
@@ -179,10 +147,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../parametric/" class="btn btn-neutral float-right" title="Parametric">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../matrix/" class="btn btn-neutral" title="Matrix"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../parametric/" class="btn btn-neutral" title="Parametric"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -208,10 +174,8 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../matrix/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../parametric/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../parametric/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
