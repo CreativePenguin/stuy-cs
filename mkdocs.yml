@@ -1,0 +1,7 @@
+site_name: Systems & Graphics Notes
+nav:
+        - Home: index.md
+        - Matrix: matrix.md
+        - Transformations: transformations.md
+        - Parametric: parametric.md
+theme: readthedocs
