@@ -49,3 +49,6 @@
 [submodule "graphics/w03_matrix"]
 	path = graphics/w03_matrix
 	url = git@github.com:CreativePenguin/stuy-cs-graphics-w03_matrix.git
+[submodule "graphics/w04_transform"]
+	path = graphics/w04_transform
+	url = git@github.com:CreativePenguin/stuy-cs-graphics-w04_transform.git
