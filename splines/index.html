@@ -80,6 +80,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#quadratric">Quadratric</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cubic">Cubic</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#hermite">Hermite</a>
@@ -120,9 +122,9 @@
             <div class="section">
               
                 <h1 id="splines-332020">Splines -- 3/3/2020</h1>
-<ul>
-<li>Curves (cubic) that appeared to be smooth/continuous</li>
-</ul>
+<blockquote>
+<p>Curves (cubic) that appeared to be smooth/continuous</p>
+</blockquote>
 <h2 id="bezier">Bezier</h2>
 <p>Defined By: 2 Endpoints (P0, P3)<br />
             2 Influence Points(P1, P2)<br />
@@ -133,13 +135,31 @@ Quadratic curve would only have on influence point  </p>
 <p><img alt="parametric_line.jpg" src="../images/parametric_line.jpg" />
 Pt = (1 - t)P0 + tP1</p>
 <h3 id="quadratric">Quadratric</h3>
-<p><img alt="quadratic.jpg" src="images/quadratic.jpg" />
-Q = (1 - t)Q0 + tQ1
-Q0t = (1 - t)P0 + tP1
-Q1t = (1 - t)P1 + tP2
-Qt = (1 - t)[(1 - t)P0 + tP1] + t[(1 - t)P1 + tP2]
-Qt = (1 - t)^2 * P0 + t(1 - t)P1 + t(1 - t)p1 + t^2P2</p>
+<p><img alt="bezier_quadratic.gif" src="../images/bezier_quadratic.gif" />
+Q0 = (1 - t)Q0 + tQ1<br />
+Q0t = (1 - t)P0 + tP1<br />
+Q1t = (1 - t)P1 + tP2<br />
+Qt = (1 - t)[(1 - t)P0 + tP1] + t[(1 - t)P1 + tP2]<br />
+<strong>Qt = (1 - t)<sup>2</sup>P0 + 2t(1 - t)P1 + t<sup>2</sup>P2</strong>  </p>
+<h3 id="cubic">Cubic</h3>
+<p><img alt="bezier_cubic.gif" src="../images/bezier_cubic.gif" /></p>
+<p>O = (1 - t)S + tT<br />
+S = (1 - t)<sup>2</sup>A + 2t(1 - t)B + t<sup>2</sup>C<br />
+T = (1 - t)<sup>2</sup>B + 2t(1 - t)C + t<sup>2</sup>D<br />
+O = (1 - t)[(1 - t)<sup>2</sup>A + 2t(1 - t)B + t<sup>2</sup>C] + t[(1 - t)<sup>2</sup>B + 2t(1 - t)C + t<sup>2</sup>D]<br />
+O = (1 - t)<sup>3</sup>A + 3t(1 - t)<sup>2</sup>B + 3t<sup>2</sup>(1 - t)C + t<sup>3</sup>D<br />
+<strong>(-A + 3B - 3C + D)t<sup>3</sup> + (3A - 6B + 3C)t<sup>2</sup> + (-3A + 3B)t + A</strong><br />
+Form: at<sup>3</sup> + bt<sup>2</sup> + ct + d</p>
 <h2 id="hermite">Hermite</h2>
+<p>Defined By: 2 endpoints: P0, P1<br />
+            Rates of change at each endpoint : R0, R1<br />
+Hermite curves are better when you're typing instructions rather than clicking and drawing things<br />
+f(t) = at<sup>3</sup> + bt<sup>2</sup> + ct + d  <em>Points on curve</em><br />
+f'(t) = 3at<sup>2</sup> + 2bt + c  <em>Rates of change</em><br />
+f(0) = d <em>P0</em><br />
+f(1) = a + b + c + d <em>P1</em><br />
+f'(0) = C <em>R0</em><br />
+f'(1) = 3a + 2b + c <em>R1</em>  </p>
               
             </div>
           </div>
