@@ -52,3 +52,6 @@
 [submodule "graphics/w04_transform"]
 	path = graphics/w04_transform
 	url = git@github.com:CreativePenguin/stuy-cs-graphics-w04_transform.git
+[submodule "graphics/w05_curves"]
+	path = graphics/w05_curves
+	url = git@github.com:CreativePenguin/stuy-cs-graphics_w05-curves.git
