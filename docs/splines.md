@@ -1,5 +1,12 @@
 # Splines -- 3/3/2020
 > Curves (cubic) that appeared to be smooth/continuous
+
+## Circle
+x = r&theta; + cx -> x = rcos(2&pi;t) + cx  
+y = r&theta; + cy -> y = rsin(2&pi;t) + cy  
+0 <= &theta; <= &pi;  
+0 <= T <= 1  
+
 ## Bezier
 Defined By: 2 Endpoints (P0, P3) && 2 Influence Points(P1, P2)  
 ![bezier_demo.jpg](images/bezier_ex.jpg)
