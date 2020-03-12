@@ -7,4 +7,5 @@ nav:
         - Transformations: transformations.md
         - Parametric: parametric.md
         - Splines: splines.md
+        - 3D Shapes: 3dshapes.md
 theme: readthedocs
