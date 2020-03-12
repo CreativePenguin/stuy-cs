@@ -2,8 +2,9 @@
 | Non Parametric | Parametric           |
 |:--------------:|:--------------------:|
 | y = f(x)       | x = f(t)<br>y = g(t) |
+
 - Define curves as system of equations in terms of an independent variable
-- Think of t as a percentage. Think of a shape, and increase t based on how far along you are
+- Think of t as a percentage. Think of a shape, and increase t based on how far along you are  
 ## Line
 (x0, y0) -> (x1, y1)  
 ```
