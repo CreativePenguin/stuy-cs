@@ -79,8 +79,22 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">3D Shapes</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#box">Box</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#given">Given</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defining-points">Defining Points</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sphere">Sphere</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#given_1">Given</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defining-points_1">Defining Points</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#torus">Torus</a>
     </li>
     </ul>
                     </li>
@@ -120,26 +134,36 @@
                 <h1 id="3d-shapes">3D Shapes</h1>
 <h2 id="box">Box</h2>
 <blockquote>
-<p>Rectangular Prism<br />
-Given Information:<br />
-- Vertex -- (left, top, front)<br />
-- Width (x), Height(y), Depth(z)<br />
-Defining Points
-- 8 vertices  </p>
+<p>Rectangular Prism  </p>
 </blockquote>
+<h3 id="given">Given</h3>
+<ul>
+<li>Vertex -- (left, top, front)  </li>
+<li>Width (x), Height(y), Depth(z)  </li>
+</ul>
+<h3 id="defining-points">Defining Points</h3>
+<ul>
+<li>8 vertices</li>
+</ul>
 <h2 id="sphere">Sphere</h2>
 <blockquote>
-<p>Rotate a circle around x or y (not z though)<br />
-Given:<br />
-- Center<br />
-- Radius<br />
-Defining Points:<br />
-- Points on surface  </p>
+<p>Rotate a circle around x or y (not z though)  </p>
 </blockquote>
-<pre><code>[1 0 0]
-[0 cos&amp;theta; - sin&amp;theta;]
-[
-</code></pre>
+<h3 id="given_1">Given</h3>
+<ul>
+<li>Center  </li>
+<li>Radius  </li>
+</ul>
+<h3 id="defining-points_1">Defining Points</h3>
+<ul>
+<li>Points on circumference
+x -&gt; rcos(&theta;)<br />
+y -&gt; rsin(&theta;)  </li>
+</ul>
+<h2 id="torus">Torus</h2>
+<blockquote>
+<p>Dounut Shape</p>
+</blockquote>
               
             </div>
           </div>
