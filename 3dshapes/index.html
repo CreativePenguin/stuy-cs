@@ -94,7 +94,17 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#torus">Torus</a>
+    <li class="toctree-l2"><a class="reference internal" href="#-points-on-circumference">- Points on circumference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#torus-courtesy-of-mr-kats">Torus (courtesy of Mr. Kats)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#given_2">Given</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defining-points_2">Defining Points</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#-points-on-the-surface">- Points on the surface</a>
     </li>
     </ul>
                     </li>
@@ -132,6 +142,7 @@
             <div class="section">
               
                 <h1 id="3d-shapes">3D Shapes</h1>
+<p>Psh, 3D was so 2010, it's all about sniffing glue to pass the time  </p>
 <h2 id="box">Box</h2>
 <blockquote>
 <p>Rectangular Prism  </p>
@@ -147,7 +158,8 @@
 </ul>
 <h2 id="sphere">Sphere</h2>
 <blockquote>
-<p>Rotate a circle around x or y (not z though)  </p>
+<p>Rotate a circle around x or y (not z though)<br />
+Don't connect points. Therefore, plot things twice  </p>
 </blockquote>
 <h3 id="given_1">Given</h3>
 <ul>
@@ -155,15 +167,35 @@
 <li>Radius  </li>
 </ul>
 <h3 id="defining-points_1">Defining Points</h3>
-<ul>
-<li>Points on circumference
-x -&gt; rcos(&theta;)<br />
-y -&gt; rsin(&theta;)  </li>
-</ul>
-<h2 id="torus">Torus</h2>
+<h2 id="-points-on-circumference">- Points on circumference</h2>
+<p>&theta;: Circle Creation: 0 - 2&pi;<br />
+&phi;: Rotation: 0 - &pi;<br />
+x = rcos&theta; + Cx<br />
+y = rsin&theta;cos&amp;&phi; + Cy<br />
+z = rsin&theta;sin&phi; + Cz  </p>
+<pre><code>for rot: 0 - 1
+    for circ: 0 - 1
+        x = rcos(pi * circ) + Cx
+        y = rsin(pi * circ)cos(2pi * rot) + Cy
+        z = rsin(pi * circ)sin(2pi * rot) + Cz
+</code></pre>
+
+<h2 id="torus-courtesy-of-mr-kats">Torus (courtesy of Mr. Kats)</h2>
 <blockquote>
 <p>Dounut Shape</p>
 </blockquote>
+<h3 id="given_2">Given</h3>
+<p><img alt="torus.png" src="../images/torus.png" />
+- Center<br />
+- Distance from center to center of cross section (R)<br />
+- Radius of cross section (r)  </p>
+<h3 id="defining-points_2">Defining Points</h3>
+<h2 id="-points-on-the-surface">- Points on the surface</h2>
+<p>Torus = Circle + Translation + Rotation<br />
+y-rotation Circle + Translation<br />
+[cos&phi;  0 sin&phi;][rcos&phi; + r] =
+[  0       1   0     ][rsin&phi;]     =
+[-sin&phi; 0 cos&phi;][0]             =</p>
               
             </div>
           </div>
