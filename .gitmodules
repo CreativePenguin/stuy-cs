@@ -55,3 +55,7 @@
 [submodule "graphics/w05_curves"]
 	path = graphics/w05_curves
 	url = git@github.com:CreativePenguin/stuy-cs-graphics_w05-curves.git
+[submodule "graphics/w06_3d"]
+	path = graphics/w06_3d
+	url = git@github.com:CreativePenguin/stuy-cs-graphics_w06-3d.git
+	branch = master
