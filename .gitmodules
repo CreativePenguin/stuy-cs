@@ -56,3 +56,7 @@
 	path = graphics/w06_3d
 	url = git@github.com:CreativePenguin/stuy-cs-graphics_w06-3d.git
 	branch = master
+[submodule "softdev"]
+	path = softdev
+	url = git@github.com:CreativePenguin/stuyvesant-softdev.git
+	branch = master
